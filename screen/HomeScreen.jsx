@@ -4,9 +4,6 @@ import styles from '../styles';
 import { Link } from 'react-router-native';
 import 'react-native-gesture-handler';
 
-
-// import {BienesScreen} from './BienesScreen'
-
 // Importa los componentes de HomeScreen
 
 import BienesSection from '../sections/BienesSection';

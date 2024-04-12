@@ -1,61 +1,87 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  
-  mainContainer: {        
+  // Contenido
+  mainContainer: {
     flex: 1,
-    width:'100%',
-    backgroundColor: 'rgb(40, 43, 46)', // Fondo oscuro
-    
+    width: '100%',
+    backgroundColor: 'rgb(40, 43, 46)',
   },
   sectionContainer: {
-    marginTop: 10, // Espacio superior entre el navbar y las secciones
+    marginTop: 10,
   },
   row: {
-    flexDirection: 'row', // Para alinear horizontalmente los elementos
-    justifyContent: 'space-evenly', // Para distribuir uniformemente los elementos en el eje principal
-    marginBottom: 5, // Espacio entre filas
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginBottom: 5,
   },
+  // 
+  // Camara
   cameraContainer: {
-    flex: 1, // Asegúrate de que el contenedor de la cámara ocupe todo el espacio disponible
-    justifyContent: 'center', // O alineación 
-    alignItems: 'center', // O alineación 
-    
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  // Estilo para el ícono de cerrar la cámara
   closeIcon: {
     position: 'absolute',
-    top: 40, // Ajusta la posición vertical
-    right: 50, // Ajusta la posición horizontal      
-    zIndex: 1, // Asegura que esté por encima de la cámara
+    top: 50,
+    right: 50,
+    zIndex: 1,
   },
-  // Estilo para el rectángulo de escaneo
+  flashButton:{
+    position: 'absolute',
+    top: 50,
+    left: 50,
+    zIndex: 1,
+  },
+  // 
+  // Mensaje de escaneo
   scanRect: {
     position: 'absolute',
-    top: '35%', // Alinea el centro verticalmente
-    left: '10%', // Ajusta la posición horizontal
-    width: '80%', // Ancho del rectángulo de escaneo
-    aspectRatio: 1, // Proporción de aspecto 1:1
-    borderColor: 'rgba(255, 255, 255, 0.6)', // Color del borde con transparencia
-    borderWidth: 3, // Ancho del borde
+    top: '35%',
+    left: '10%',
+    width: '80%',
+    aspectRatio: 1,
+    borderColor: 'rgba(255, 255, 255, 0.6)',
+    borderWidth: 3,
   },
-  // Estilo para el contenedor de los datos escaneados
-  scannedDataContainer: {
+  scanRectContainer: {
     position: 'absolute',
-    bottom: 20, // Ajusta la posición vertical
-    left: 20, // Ajusta la posición horizontal
-    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Fondo oscuro con transparencia
-    padding: 10, // Espaciado interno
-    borderRadius: 5, // Borde redondeado
+    top: '50%', // Cambiado a la mitad de la pantalla verticalmente
+    left: '10%',
+    width: '80%',
+    alignItems: 'center', // Centrado horizontalmente
+    backgroundColor: '#045834', // Verde claro con opacidad
+    padding: 25, // Padding agregado para un aspecto más prolijo
+    borderRadius: 10, // Borde redondeado
   },
-  // Estilo para los datos escaneados
-  scannedData: {
-    color: '#fff', // Color blanco del texto
+  text: {
+    color: '#fff',
+    fontSize: 20,
+    textAlign: 'center', // Centrado horizontalmente
   },
-  
+  // 
+  // Estilos para el NavBar de los screen
+  navbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'rgb(20, 23, 26)',
+    paddingVertical: 20,
+    paddingHorizontal: 15,    
+    width: '100%',
+  },
+  leftIcon: {    
+    marginLeft: 10,
+  },
+  centerText: {
+    color: '#fff',
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+  rightIcon: {
+    marginRight: 2,
+  },
 });
 
-
-
 export default styles;
-
