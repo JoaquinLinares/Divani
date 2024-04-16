@@ -1,5 +1,7 @@
  
-import React from 'react';
+import React, { useEffect } from 'react';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import DivaniDB from './db/divani_db.json'
 import { NativeRouter, Route, Routes } from 'react-router-native';
 // importo los screen
 import HomeScreen from './screen/HomeScreen';
@@ -9,10 +11,24 @@ import EntradaScreen from "./screen/EntradaScreen";
 import SalidaScreen from './screen/SalidaScreen'
 import PedidosScreen from './screen/PedidosScreen'
 
+const setSettings = async () => {
+  try {
+    const isInit = await AsyncStorage.getItem("init")
+    
+    if (!isInit) {
+      await AsyncStorage.setItem("init", JSON.stringify(true))
+      await AsyncStorage.setItem("db", JSON.stringify(DivaniDB))
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 const App = () => {
-  return (
-    
+  useEffect(() => {
+    setSettings()
+  }, [])
+  return (   
     <NativeRouter>
       <Routes>
         <Route path='/' Component={HomeScreen}/> 
