@@ -6,8 +6,6 @@ import Constants from 'expo-constants';
 import { Link } from 'react-router-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import MenuDesplegable from '../components/MenuDesplegable';
-
-
 import styles from '../styles';
 
 
@@ -15,7 +13,7 @@ const BienesScreen = () => {
 
     const history = useNavigate();
   
-    useEffect(() => {
+    useEffect(async () => {
       const backAction = () => {
         history('/'); // Navega de vuelta a la pantalla de inicio (HomeScreen)
         return true; // Evita que la aplicación se cierre al presionar el botón de retroceso
