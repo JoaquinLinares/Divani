@@ -2,12 +2,9 @@ import React from 'react';
 import SectionSquare from './SectionSquare';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-const BienesSection = () => {
-  // lógica para obtener el número de bienes
-  const bienesCount = 10; // Por ejemplo
-  
+const BienesSection = () => {  
   return (
-    <SectionSquare logo={<FontAwesome5 name="dolly" size={24} color="white" />} title="Bienes" count={bienesCount} />
+    <SectionSquare logo={<FontAwesome5 name="dolly" size={24} color="white" />} title="Bienes"  />
   );
 };
 

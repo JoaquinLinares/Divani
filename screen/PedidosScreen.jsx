@@ -7,6 +7,9 @@ import { Link } from 'react-router-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import MenuDesplegable from '../components/MenuDesplegable';
 import styles from '../styles';
+import { addAllItems, deleteAllItems } from '../services/async-storage-write';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAllItems } from '../services/async-storage-read';
 
 const PedidosScreen = () => {
 
@@ -33,6 +36,44 @@ const PedidosScreen = () => {
         useNativeDriver: false, // Necesario para que funcione en Android
       }).start();
     };
+
+
+    /////////////////////////////////////////////////////////////////// Simulación de uso de deleteAllItems
+// const simulateDeleteAllItems = async () => {
+//   try {
+//       console.log("Elementos antes de eliminar:", await AsyncStorage.getItem('db'));
+
+//       console.log("Eliminando todos los elementos...");
+//       await deleteAllItems();
+//       console.log("Elementos después de eliminar:", await AsyncStorage.getItem('db'));
+//   } catch (error) {
+//       console.error("Error en la simulación:", error);
+//   }
+// };
+
+// const simulateAddAllItems = async () => {
+//     try {
+//         console.log("Elementos antes de agregar:", await AsyncStorage.getItem('db'));
+  
+//         console.log("Agregando todos los elementos...");
+//         await addAllItems();
+//         console.log("Elementos después de agregar:", await AsyncStorage.getItem('db'));
+//     } catch (error) {
+//         console.error("Error en la simulación:", error);
+//     }
+//   };
+//   // Ejecutar la simulación
+//   simulateAddAllItems();
+
+
+// useEffect(() => {
+//       const fetchData = async () => {
+//           const items = await getAllItems();
+//           console.log("Datos leídos desde AsyncStorage:", items);
+//       };
+
+//       fetchData();
+//   }, []);  
   
 
   return (

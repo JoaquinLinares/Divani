@@ -79,9 +79,21 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
   },
+  centerTextStock: {
+    paddingRight:70,
+    color: '#fff',
+    fontSize: 26,
+    fontWeight: 'bold',
+  },
   rightIcon: {
     marginRight: 2,
   },
+  movimientoText:{
+    fontSize:18,
+    color:'#fff',
+    textAlign:'center',
+    margin:10,
+  }
 });
 
 export default styles;
