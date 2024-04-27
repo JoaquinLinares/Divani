@@ -7,9 +7,9 @@ import { Link } from 'react-router-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import MenuDesplegable from '../components/MenuDesplegable';
 import styles from '../styles';
-import { addAllItems, deleteAllItems } from '../services/async-storage-write';
+import { addAllItems, deleteAllItems } from '../services/async-storage/async-storage-write';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getAllItems } from '../services/async-storage-read';
+import { getAllItems } from '../services/async-storage/async-storage-read';
 
 const PedidosScreen = () => {
 
