@@ -13,8 +13,8 @@ import MenuDesplegable from '../components/MenuDesplegable';
 
 
 // Funciones de AsyncStorage
-import { updateItem } from '../services/async-storage-write'; 
-import { getAllItems } from '../services/async-storage-read';
+import { updateItem } from '../services/async-storage/async-storage-write'; 
+import { getAllItems } from '../services/async-storage/async-storage-read';
 
 const SalidaScreen = () => {
     // Definición de variables de estado y constantes

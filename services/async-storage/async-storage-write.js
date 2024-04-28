@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getAllItems } from "./async-storage-read";
-import dbData from "../db/divani_db.json"; // Importar los datos del archivo JSON
+import dbData from "../../db/divani_db.json"; // Importar los datos del archivo JSON
 
 // Método para agregar un nuevo elemento
 export const addItem = async (newItem) => {

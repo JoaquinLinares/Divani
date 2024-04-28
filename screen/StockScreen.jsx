@@ -3,8 +3,8 @@ import { Text, View, ScrollView, StyleSheet, BackHandler, TextInput, TouchableHi
 import { Link, useNavigate, useParams } from 'react-router-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Constants from 'expo-constants';
-import { getItemById } from '../services/async-storage-read'; // Importa la función para obtener y actualizar los datos del almacenamiento
-import { updateItemById } from '../services/async-storage-write';
+import { getItemById } from '../services/async-storage/async-storage-read'; // Importa la función para obtener y actualizar los datos del almacenamiento
+import { updateItemById } from '../services/async-storage/async-storage-write';
 import styles from '../styles';
 
 const StockScreen = () => {
