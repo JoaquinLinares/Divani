@@ -6,8 +6,8 @@ import Constants from 'expo-constants';
 import { Link } from 'react-router-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import MenuDesplegable from '../components/MenuDesplegable';
-import { getAllItems } from '../services/async-storage-read';
-import { addItem } from '../services/async-storage-write'; // Importamos el nuevo método
+import { getAllItems } from '../services/async-storage/async-storage-read';
+import { addItem } from '../services/async-storage/async-storage-write'; // Importamos el nuevo método
 import styles from '../styles';
 
 const BienesScreen = () => {

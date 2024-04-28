@@ -12,8 +12,8 @@ import MenuDesplegable from '../components/MenuDesplegable';
 import { useContextApp } from '../components/ContextApp'; // Importamos el hook useContextApp
 
 // Funciones de AsyncStorage
-import { updateItem } from '../services/async-storage-write'; 
-import { getAllItems } from '../services/async-storage-read';
+import { updateItem } from '../services/async-storage/async-storage-write'; 
+import { getAllItems } from '../services/async-storage/async-storage-read';
 
 const EntradaScreen = () => {
     // Definición de variables de estado y constantes

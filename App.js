@@ -1,7 +1,8 @@
  
 import React, { useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import DivaniDB from './db/divani_db.json'
+import DivaniDB from './db/divani_db.json';
+import DivaniMovements from './movements/divani_movements.json';
 import { NativeRouter, Route, Routes } from 'react-router-native';
 import { ContextAppProvider } from './components/ContextApp'; // Ajusta la ruta si es diferente
 // importo los screen
@@ -13,15 +14,39 @@ import SalidaScreen from './screen/SalidaScreen'
 import PedidosScreen from './screen/PedidosScreen'
 import StockScreen from './screen/StockScreen';
 
+const MILLI_SECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+const SEVEN_DAYS = 7;
+
+const setMovements = async () => {
+  const currentDate = new Date();
+
+  const divaniMovementsUpdated = DivaniMovements
+  DivaniMovements.created_at = currentDate
+
+  const movements = await AsyncStorage.getItem("movements");
+  const lastDate = movements ? JSON.parse(movements).created_at : null;
+
+  if (lastDate && (((new Date(currentDate) - new Date(lastDate)) / MILLI_SECONDS_PER_DAY) > SEVEN_DAYS)) {
+    await AsyncStorage.removeItem("movements");
+    await AsyncStorage.setItem("movements", JSON.stringify(divaniMovementsUpdated))
+  }
+  
+  if (!movements) {
+    await AsyncStorage.setItem("movements", JSON.stringify(divaniMovementsUpdated))
+  }
+}
+
 
 const setSettings = async () => {
   try {
-    const isInit = await AsyncStorage.getItem("init")
+    const database = await AsyncStorage.getItem("db")
     
-    if (!isInit) {
-      await AsyncStorage.setItem("init", JSON.stringify(true))
+    if (!database) {
       await AsyncStorage.setItem("db", JSON.stringify(DivaniDB))
     }
+
+    await setMovements()
+
   } catch (error) {
     console.error(error)
   }

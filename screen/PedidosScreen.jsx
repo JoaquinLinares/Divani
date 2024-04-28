@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router-native';
 import Constants from 'expo-constants';
 import { FontAwesome5 } from '@expo/vector-icons';
 import MenuDesplegable from '../components/MenuDesplegable';
+import styles from '../styles';
+import { addAllItems, deleteAllItems } from '../services/async-storage-write';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAllItems } from '../services/async-storage-read';
 
 const PedidosScreen = () => {
     const history = useNavigate();
