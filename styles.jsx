@@ -93,7 +93,63 @@ const styles = StyleSheet.create({
     color:'#fff',
     textAlign:'center',
     margin:10,
-  }
+  },
+  divaniText: {
+    color: 'white',
+    fontSize: 18,
+},
+sectionContainer: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+},
+input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 5,
+    marginBottom: 10,
+},
+expresoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+},
+tabla: {
+    flexDirection: 'row',
+},
+tablaContent: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    marginHorizontal: 20,
+},
+cabeceraTabla: {
+    flexDirection: 'row',
+    backgroundColor: '#f0f0f0',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+},
+cabeceraTitulo: {
+    flex: 1,
+    fontWeight: 'bold',
+},
+filaTabla: {
+    flexDirection: 'row',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+},
+numeroFila: {
+    flex: 1,
+},
+inputTabla: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 5,
+},
 });
 
 export default styles;
