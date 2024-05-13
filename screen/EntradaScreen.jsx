@@ -9,29 +9,32 @@ import { Link } from 'react-router-native';
 import styles from '../styles';
 import imageSource from '../assets/Box-Transparent-PNG.webp';
 import MenuDesplegable from '../components/MenuDesplegable';
-import { useContextApp } from '../components/ContextApp'; // Importamos el hook useContextApp
-
-// Funciones de AsyncStorage
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { updateItem } from '../services/async-storage/async-storage-write'; 
 import { getAllItems } from '../services/async-storage/async-storage-read';
 
 const EntradaScreen = () => {
-    // Definición de variables de estado y constantes
     const [hasPermission, setHasPermission] = useState(null);
     const [scannedData, setScannedData] = useState([]);
     const [scanMessage, setScanMessage] = useState("");
     const [openCamera, setOpenCamera] = useState(false);
-    const [isScanning, setIsScanning] = useState(false); // Nuevo estado para controlar el escaneo
-    const [flashOn, setFlashOn] = useState(false); // Nuevo estado para controlar el flash
-    const [modalVisible, setModalVisible] = useState(false); // Estado para controlar la visibilidad del modal
-    const [selectedItemIndex, setSelectedItemIndex] = useState(null); // Estado para almacenar el índice del elemento seleccionado
-    const [newStockCount, setNewStockCount] = useState(""); // Estado para almacenar la nueva cantidad de stock
-    const [currentDate, setCurrentDate] = useState(""); // Estado para almacenar la fecha actual
-    const history = useNavigate(); // Función de navegación
-    const window = useWindowDimensions(); // Dimensiones de la ventana
+    const [isScanning, setIsScanning] = useState(false);
+    const [flashOn, setFlashOn] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [selectedItemIndex, setSelectedItemIndex] = useState(null);
+    const [newStockCount, setNewStockCount] = useState("");
+    const [currentDate, setCurrentDate] = useState("");
+    const history = useNavigate();
+    const window = useWindowDimensions();
 
-    // Contexto
-    const { movimientos, agregarMovimiento } = useContextApp(); // Utilizamos el hook useContextApp para acceder al contexto
+    useEffect(() => {
+        (async () => {
+            const { status } = await Camera.requestCameraPermissionsAsync();
+            setHasPermission(status === 'granted');
+        })();
+    }, []);
+
+  
 
     // Función para manejar el evento de retroceso del dispositivo
     const handleBackPress = () => {
@@ -63,44 +66,71 @@ const EntradaScreen = () => {
         if (!isScanning) {
             setIsScanning(true); // Inicia el escaneo
     
+            // Muestra un mensaje de escaneo
+            setScanMessage(` Producto escaneado - ${data}`);
+    
             // Verifica si el producto ya ha sido escaneado antes
-            const existingProduct = scannedData.findIndex(item => item.data === data);
-            if (existingProduct !== -1  ) {
-                // Si el producto ya ha sido escaneado, incrementa el contador
+            const existingProductIndex = scannedData.findIndex(item => item.data === data);
+            if (existingProductIndex !== -1) {
+                // Si el producto ya ha sido escaneado, incrementa la cantidad
                 const updatedScannedData = [...scannedData];
-                updatedScannedData[existingProduct].count += 1;
+                updatedScannedData[existingProductIndex].count += 1;
                 setScannedData(updatedScannedData);
+    
+                // Incrementa la cantidad del producto en AsyncStorage
+                let storedMovimientos = await AsyncStorage.getItem('movements');
+                storedMovimientos = storedMovimientos ? JSON.parse(storedMovimientos) : { movements: [], created_at: '' };
+                const existingMovementIndex = storedMovimientos.movements.findIndex(item => item.producto === data.slice(0, -1) && item.tipo === 'entrada');
+                if (existingMovementIndex !== -1) {
+                    storedMovimientos.movements[existingMovementIndex].cantidad += 1;
+                }
+                await AsyncStorage.setItem('movements', JSON.stringify(storedMovimientos));
             } else {
                 // Si es un nuevo producto, verifica si existe en el almacenamiento
                 const allItems = await getAllItems();
                 const existingProductIndex = allItems.findIndex(item => item.id === data.slice(0, -1));
     
                 if (existingProductIndex !== -1 ) {
-                    // Si el producto existe, agrega un nuevo elemento a la lista                    
-                    setScannedData(prevData => [...prevData, { type, data, count: 1 }]);
-                    agregarMovimiento({ tipo: 'entrada', producto: data.slice(0, -1), cantidad: 1, fecha: currentDate }); // Agrega el movimiento al contexto con la fecha actual
+                    // Si el producto existe, agrega un nuevo elemento a la lista
+                    setScannedData(prevData => {
+                        const existingIndex = prevData.findIndex(item => item.data === data);
+                        if (existingIndex !== -1) {
+                            const updatedData = [...prevData];
+                            updatedData[existingIndex].count += 1;
+                            return updatedData;
+                        } else {
+                            return [...prevData, { type, data, count: 1 }];
+                        }
+                    });
+                    // Agrega el movimiento al AsyncStorage
+                    let storedMovimientos = await AsyncStorage.getItem('movements');
+                    storedMovimientos = storedMovimientos ? JSON.parse(storedMovimientos) : { movements: [], created_at: '' };
+                    const nuevoProducto = { tipo: 'entrada', producto: data.slice(0, -1), cantidad: 1, fecha: currentDate };
+                    storedMovimientos.movements.push(nuevoProducto);
+                    await AsyncStorage.setItem('movements', JSON.stringify(storedMovimientos));
+                    
                 } else {
                     // Si el producto no existe, muestra un mensaje
                     setScanMessage(` Producto no encontrado - ${data}`);
                 }
             }
-            
 
             // Elimina la última letra del código escaneado
             const trimmedData = data.slice(0, -1);
     
             // Verifica si el producto coincide con algún ID en el AsyncStorage
             const allItems = await getAllItems();
-            const existingProductIndex = allItems.findIndex(item => item.id === trimmedData);
+            const existingProductIndexx = allItems.findIndex(item => item.id === trimmedData);
     
-            if (existingProductIndex !== -1) {
+            if (existingProductIndexx !== -1) {
                 // Si el producto existe, actualiza su stock sumando 1
-                const updatedItem = { ...allItems[existingProductIndex], stock: allItems[existingProductIndex].stock + 1 };
+                const updatedItem = { ...allItems[existingProductIndexx], stock: allItems[existingProductIndexx].stock + 1 };
                 await updateItem(trimmedData, updatedItem); // Actualiza el item en el AsyncStorage
                 setScanMessage(` Datos - ${data}`);
             } else {
                 setScanMessage(` Producto no encontrado - ${data}`);
             }            
+    
             // Después de 2.5 segundos, habilita nuevamente el escaneo
             setTimeout(() => {
                 setIsScanning(false);
@@ -111,6 +141,7 @@ const EntradaScreen = () => {
             }, 2100);
         }
     };
+    
     
     
     // Función para alternar el estado del flash
@@ -204,6 +235,7 @@ const EntradaScreen = () => {
                             <Text style={stylesBienes.text}>Articulos escaneados <FontAwesome5 name='arrow-down' size={20} color='white' /></Text>
                         </View><ScrollView style={[stylesBienes.scrollView, { maxHeight: window.height - Constants.statusBarHeight - 220 }]}>
                             {scannedData.map((item, index) => (
+                                
                                 <TouchableWithoutFeedback key={index} onPress={() => openModal(index)}>
                                     <View style={stylesBienes.scannedItem}>
                                         <Text style={stylesBienes.scannedDataText}>
@@ -241,6 +273,7 @@ const EntradaScreen = () => {
                             style={stylesModal.modalInput}
                             keyboardType="numeric"
                             placeholder="Cantidad a agregar"
+                            placeholderTextColor={'#fff'}
                             onChangeText={text => setNewStockCount(text)}
                         />
                         <View style={stylesModal.modalButtonContainer}>
@@ -252,7 +285,7 @@ const EntradaScreen = () => {
             </Modal>
 
             {/* Renderiza la cámara si está abierta */}
-            {openCamera && (
+            {openCamera &&  hasPermission &&(
                 <View style={styles.cameraContainer}>
                     <Camera
                         onBarCodeScanned={handleBarCodeScanned}
@@ -296,7 +329,8 @@ const stylesBienes = StyleSheet.create({
         width: '80%',
         height: 85,
         alignSelf: 'center',
-        backgroundColor: '#555',
+        borderColor:'#6A6A11',
+        borderWidth:3,
         padding: 10,
         borderRadius: 5,
     },
@@ -352,7 +386,7 @@ const stylesModal = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
     modalContent: {
-        backgroundColor: '#fff',
+        backgroundColor: '#111',
         padding: 20,
         borderRadius: 10,
         width: '80%',
@@ -361,11 +395,13 @@ const stylesModal = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
+        color:'#fff',
         textAlign: 'center',
     },
     modalInput: {
         borderWidth: 1,
-        borderColor: '#ccc',
+        borderColor: '#6A6A11',
+        color:'#fff',
         borderRadius: 5,
         padding: 10,
         marginBottom: 10,

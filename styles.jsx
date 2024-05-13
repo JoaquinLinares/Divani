@@ -4,8 +4,12 @@ const styles = StyleSheet.create({
   // Contenido
   mainContainer: {
     flex: 1,
-    width: '100%',
-    backgroundColor: 'rgb(40, 43, 46)',
+    width: '100%',   
+    backgroundColor:'#000'
+  },
+  mainContainerHome: {
+    flex: 1,
+    width: '100%',       
   },
   sectionContainer: {
     marginTop: 10,
@@ -15,12 +19,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     marginBottom: 5,
   },
+  backgroundImage: {    
+    flex: 1,    
+    height: '100%',  
+    width: '100%',
+    resizeMode:'cover', // Ajusta la imagen al tamaño de la pantalla
+    justifyContent: 'center', // Centra el contenido verticalmente
+    zIndex:500,
+  },
   // 
   // Camara
   cameraContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    
   },
   closeIcon: {
     position: 'absolute',
@@ -29,7 +42,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   flashButton:{
-    position: 'absolute',
+    position: 'absolute',    
     top: 50,
     left: 50,
     zIndex: 1,
@@ -51,7 +64,7 @@ const styles = StyleSheet.create({
     left: '10%',
     width: '80%',
     alignItems: 'center', // Centrado horizontalmente
-    backgroundColor: '#045834', // Verde claro con opacidad
+    backgroundColor: '#6A6A11', // Verde claro con opacidad
     padding: 25, // Padding agregado para un aspecto más prolijo
     borderRadius: 10, // Borde redondeado
   },
@@ -65,11 +78,11 @@ const styles = StyleSheet.create({
   navbar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'rgb(20, 23, 26)',
+    alignItems: 'center',    
     paddingVertical: 20,
     paddingHorizontal: 15,    
     width: '100%',
+    zIndex:999,
   },
   leftIcon: {    
     marginLeft: 10,
@@ -82,7 +95,7 @@ const styles = StyleSheet.create({
   centerTextStock: {
     paddingRight:70,
     color: '#fff',
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: 'bold',
   },
   rightIcon: {
@@ -113,42 +126,6 @@ expresoContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
-},
-tabla: {
-    flexDirection: 'row',
-},
-tablaContent: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    marginHorizontal: 20,
-},
-cabeceraTabla: {
-    flexDirection: 'row',
-    backgroundColor: '#f0f0f0',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-},
-cabeceraTitulo: {
-    flex: 1,
-    fontWeight: 'bold',
-},
-filaTabla: {
-    flexDirection: 'row',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-},
-numeroFila: {
-    flex: 1,
-},
-inputTabla: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 5,
 },
 });
 

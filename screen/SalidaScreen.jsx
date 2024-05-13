@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, TouchableWithoutFeedback, Image, ScrollView, useWindowDimensions, TouchableOpacity, Animated } from 'react-native';
+import { Text, View, StyleSheet, TouchableWithoutFeedback, Image, ScrollView, useWindowDimensions, TouchableOpacity, Animated, Modal, TextInput, Button } from 'react-native';
 import { BackHandler } from 'react-native';
 import { useNavigate } from 'react-router-native';
 import { Camera } from 'expo-camera';
@@ -9,7 +9,7 @@ import { Link } from 'react-router-native';
 import styles from '../styles';
 import imageSource from '../assets/Box-Transparent-PNG.webp';
 import MenuDesplegable from '../components/MenuDesplegable';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 // Funciones de AsyncStorage
@@ -24,9 +24,19 @@ const SalidaScreen = () => {
     const [openCamera, setOpenCamera] = useState(false);
     const [isScanning, setIsScanning] = useState(false); // Nuevo estado para controlar el escaneo
     const [flashOn, setFlashOn] = useState(false); // Nuevo estado para controlar el flash
+    const [modalVisible, setModalVisible] = useState(false); // Estado para controlar la visibilidad del modal
+    const [selectedItemIndex, setSelectedItemIndex] = useState(null); // Estado para almacenar el índice del elemento seleccionado
+    const [newStockCount, setNewStockCount] = useState(""); // Estado para almacenar la nueva cantidad de stock
+    const [currentDate, setCurrentDate] = useState(""); // Estado para almacenar la fecha actual
     const history = useNavigate(); // Función de navegación
     const window = useWindowDimensions(); // Dimensiones de la ventana
-    
+
+    useEffect(() => {
+        (async () => {
+            const { status } = await Camera.requestCameraPermissionsAsync();
+            setHasPermission(status === 'granted');
+        })();
+    }, []);   
     
 
 
@@ -49,30 +59,63 @@ const SalidaScreen = () => {
         return () => backHandler.remove(); // Limpia el evento de retroceso al desmontar el componente
     }, [openCamera]); // Ejecuta el efecto cuando cambia el estado de openCamera
 
+    // Efecto para obtener la fecha actual
+    useEffect(() => {
+        const currentDate = new Date().toLocaleDateString(); // Obtiene la fecha actual
+        setCurrentDate(currentDate); // Almacena la fecha actual en el estado
+    }, []); // Se ejecuta solo una vez al montar el componente
+
+
     // Función para manejar el escaneo de códigos de barras
     const handleBarCodeScanned = async ({ type, data }) => {
         if (!isScanning) {
             setIsScanning(true); // Inicia el escaneo
 
             // Verifica si el producto ya ha sido escaneado antes
-            const existingProduct = scannedData.findIndex(item => item.data === data);
-            if (existingProduct !== -1) {
-                // Si el producto ya ha sido escaneado, incrementa el contador
+            // Verifica si el producto ya ha sido escaneado antes
+            const existingProductIndex = scannedData.findIndex(item => item.data === data);
+            if (existingProductIndex !== -1) {
+                // Si el producto ya ha sido escaneado, incrementa la cantidad
                 const updatedScannedData = [...scannedData];
-                updatedScannedData[existingProduct].count += 1;
+                updatedScannedData[existingProductIndex].count += 1;
                 setScannedData(updatedScannedData);
+
+                // disminuye la cantidad del producto en AsyncStorage
+                let storedMovimientos = await AsyncStorage.getItem('movements');
+                storedMovimientos = storedMovimientos ? JSON.parse(storedMovimientos) : { movements: [], created_at: '' };
+                const existingMovementIndex = storedMovimientos.movements.findIndex(item => item.producto === data.slice(0, -1) && item.tipo === 'salida');
+                if (existingMovementIndex !== -1) {
+                    storedMovimientos.movements[existingMovementIndex].cantidad += 1;
+                }
+                await AsyncStorage.setItem('movements', JSON.stringify(storedMovimientos));
             } else {
                  // Si es un nuevo producto, verifica si existe en el almacenamiento
-                 const allItems = await getAllItems();
-                 const existingProductIndex = allItems.findIndex(item => item.id === data.slice(0, -1));
-     
-                 if (existingProductIndex !== -1) {
-                     // Si el producto existe, agrega un nuevo elemento a la lista
-                     setScannedData(prevData => [...prevData, { type, data, count: 1 }]);
-                 } else {
-                     // Si el producto no existe, muestra un mensaje
-                     setScanMessage(` Producto no encontrado - ${data}`);
-                 }
+                const allItems = await getAllItems();
+                const existingProductIndex = allItems.findIndex(item => item.id === data.slice(0, -1));
+    
+                if (existingProductIndex !== -1 ) {
+                    // Si el producto existe, agrega un nuevo elemento a la lista
+                    setScannedData(prevData => {
+                        const existingIndex = prevData.findIndex(item => item.data === data);
+                        if (existingIndex !== -1) {
+                            const updatedData = [...prevData];
+                            updatedData[existingIndex].count += 1;
+                            return updatedData;
+                        } else {
+                            return [...prevData, { type, data, count: 1 }];
+                        }
+                    });
+                    // Agrega el movimiento al AsyncStorage
+                    let storedMovimientos = await AsyncStorage.getItem('movements');
+                    storedMovimientos = storedMovimientos ? JSON.parse(storedMovimientos) : { movements: [], created_at: '' };
+                    const nuevoProducto = { tipo: 'salida', producto: data.slice(0, -1), cantidad: 1, fecha: currentDate };
+                    storedMovimientos.movements.push(nuevoProducto);
+                    await AsyncStorage.setItem('movements', JSON.stringify(storedMovimientos));
+                    
+                } else {
+                    // Si el producto no existe, muestra un mensaje
+                    setScanMessage(` Producto no encontrado - ${data}`);
+                }
             }
 
             // Elimina la última letra del código escaneado
@@ -80,11 +123,11 @@ const SalidaScreen = () => {
 
             // Verifica si el producto coincide con algún ID en el AsyncStorage
             const allItems = await getAllItems();
-            const existingProductIndex = allItems.findIndex(item => item.id === trimmedData);
+            const existingProductIndexx = allItems.findIndex(item => item.id === trimmedData);
 
-            if (existingProductIndex !== -1) {
+            if (existingProductIndexx !== -1) {
                 // Si el producto existe, actualiza su stock restando 1
-                const updatedItem = { ...allItems[existingProductIndex], stock: allItems[existingProductIndex].stock - 1 };
+                const updatedItem = { ...allItems[existingProductIndexx], stock: allItems[existingProductIndexx].stock - 1 };
 
                 if (updatedItem.stock >= 0) {
                     // Si el stock es mayor o igual a cero, actualiza el item
@@ -125,6 +168,44 @@ const SalidaScreen = () => {
         }).start();
     };
 
+    
+    // Función para abrir el modal y establecer el índice del ítem seleccionado
+    const openModal = (index) => {
+        setSelectedItemIndex(index);
+        setModalVisible(true);
+    };
+
+    // Función para cerrar el modal y restablecer el índice del ítem seleccionado
+    const closeModal = () => {
+        setSelectedItemIndex(null);
+        setModalVisible(false);
+    };
+
+   // Función para manejar el cambio de stock    
+const handleChangeStock = async () => {
+    if (selectedItemIndex !== null) {
+        const allItems = await getAllItems();
+        const selectedItem = scannedData[selectedItemIndex];
+        const updatedItemIndex = allItems.findIndex(item => item.id === selectedItem.data.slice(0, -1));
+
+        if (updatedItemIndex !== -1) {
+            // Solo actualiza el stock si se encuentra el ítem
+            const updatedItem = {
+                ...allItems[updatedItemIndex],
+                stock: parseInt(allItems[updatedItemIndex].stock) - parseInt(newStockCount) // Resta en lugar de sumar
+            };
+            await updateItem(selectedItem.data.slice(0, -1), updatedItem);
+            
+            // Actualiza el contador de la lista de escaneados
+            const updatedScannedData = [...scannedData];
+            updatedScannedData[selectedItemIndex].count += parseInt(newStockCount); // Resta en lugar de sumar
+            setScannedData(updatedScannedData);
+            
+        }
+        closeModal();
+    }
+};
+
     // Renderización del componente
     return (
         <View style={styles.mainContainer}>
@@ -162,15 +243,17 @@ const SalidaScreen = () => {
                         <><View>
                             <Text style={stylesBienes.text}>Articulos escaneados <FontAwesome5 name='arrow-down' size={20} color='white' /></Text>
                         </View><ScrollView style={[stylesBienes.scrollView, { maxHeight: window.height - Constants.statusBarHeight - 220 }]}>
-                            {scannedData.map((item, index) => (
-                                <View key={index} style={stylesBienes.scannedItem}>
-                                    <Text style={stylesBienes.scannedDataText}>
-                                        {item.data}
-                                    </Text>
-                                    <Text style={stylesBienes.scannedCountText}>
-                                        {item.count}
-                                    </Text>
-                                </View>
+                            {scannedData.map((item, index) => (                               
+                                <TouchableWithoutFeedback key={index} onPress={() => openModal(index)}>
+                                    <View style={stylesBienes.scannedItem}>
+                                        <Text style={stylesBienes.scannedDataText}>
+                                            {item.data}
+                                        </Text>
+                                        <Text style={stylesBienes.scannedCountText}>
+                                            {item.count}
+                                        </Text>
+                                    </View>
+                                </TouchableWithoutFeedback>
                             ))}
                         </ScrollView></>
                     ) : (
@@ -184,6 +267,30 @@ const SalidaScreen = () => {
             )}
             <MenuDesplegable menuAnimation={menuAnimation} toggleMenu={toggleMenu} nombre='salida' />
 
+             {/* Modal para cambiar el stock */}
+             <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={closeModal}
+            >
+                <View style={stylesModal.modalContainer}>
+                    <View style={stylesModal.modalContent}>
+                        <Text style={stylesModal.modalTitle}>Modificar Entrada</Text>
+                        <TextInput
+                            style={stylesModal.modalInput}
+                            keyboardType="numeric"
+                            placeholder="Cantidad a agregar"
+                            placeholderTextColor={'#fff'}
+                            onChangeText={text => setNewStockCount(text)}
+                        />
+                        <View style={stylesModal.modalButtonContainer}>
+                            <Button title="Cancelar" onPress={closeModal} />
+                            <Button title="Guardar" onPress={handleChangeStock} />
+                        </View>
+                    </View>
+                </View>
+            </Modal>
 
             {/* Renderiza la cámara si está abierta */}
             {openCamera && (
@@ -230,7 +337,8 @@ const stylesBienes = StyleSheet.create({
         width: '80%',
         height: 85,
         alignSelf: 'center',
-        backgroundColor: '#555',
+        borderColor:'#6A6A11',
+        borderWidth:3,
         padding: 10,
         borderRadius: 5,
     },
@@ -275,6 +383,41 @@ const stylesIMG = StyleSheet.create({
         textAlign: 'center',
         color: '#AAA',
 
+    },
+});
+
+// Estilos para el modal
+const stylesModal = StyleSheet.create({
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+        backgroundColor: '#111',
+        padding: 20,
+        borderRadius: 10,
+        width: '80%',
+    },
+    modalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color:'#fff',
+        marginBottom: 10,
+        textAlign: 'center',
+    },
+    modalInput: {
+        borderWidth: 1,
+        borderColor: '#6A6A11',
+        borderRadius: 5,
+        color:'#fff',
+        padding: 10,
+        marginBottom: 10,
+    },
+    modalButtonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
     },
 });
 

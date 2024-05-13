@@ -21,10 +21,6 @@ export const getItemById = async (articulo) => {
   }
 };
 
-
-
-
-
 // Método para obtener todos los elementos
 export const getAllItems = async () => {
   try {

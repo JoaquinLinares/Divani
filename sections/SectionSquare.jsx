@@ -21,8 +21,8 @@ const SectionSquare = ({ logo, title, count }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#757575', // Gris más oscuro
-    borderColor: '#006400', // Verde más oscuro
+    backgroundColor: 'rgba(40,40,40, 0.8)', // Gris más oscuro
+    borderColor: '#9C9C10', // Verde más oscuro    
     borderWidth: 2,
     borderRadius: 10,
     overflow: 'hidden',

@@ -112,10 +112,10 @@ const BienesScreen = () => {
             <FontAwesome5 name="arrow-left" size={24} color="white" />
           </Link>
         </View>
-        <Text style={styles.centerText}>Bienes</Text>
+        <Text style={styles.centerText}>Bienes</Text>   
         <View style={styles.rightIcon}>
-          <FontAwesome5 name="file-excel" size={24} color="white" />
-        </View>
+              <FontAwesome5 name="file-excel" size={24} color="white" />
+        </View>     
         <View style={styles.rightIcon}>
           <TouchableOpacity onPress={toggleMenu}>
             <FontAwesome5 name='bars' size={24} color="white" />
@@ -124,6 +124,7 @@ const BienesScreen = () => {
       </View>
       {/* Menu desplegable */}
       <MenuDesplegable menuAnimation={menuAnimation} toggleMenu={toggleMenu} nombre='bienes' />
+      
       <ScrollView contentContainerStyle={stylesBienes.container}>
         {renderArticles()}
       </ScrollView>
@@ -139,36 +140,43 @@ const BienesScreen = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}>
+
         <View style={stylesBienes.modalContainer}>
           <View style={stylesBienes.modalContent}>
             <Text style={stylesBienes.modalTitle}>Agregar Nuevo Producto</Text>
+
             <TextInput
               style={stylesBienes.input}
-              placeholder="Nombre"
+              placeholder='Nombre'
+              placeholderTextColor='#fff' // Color del placeholder
               value={newProduct.id}
               onChangeText={(text) => setNewProduct({ ...newProduct, id: text })}
             />
             <TextInput
               style={stylesBienes.input}
               placeholder="Artículo"
+              placeholderTextColor='#fff' // Color del placeholder
               value={newProduct.articulo}
               onChangeText={(text) => setNewProduct({ ...newProduct, articulo: text })}
             />
             <TextInput
               style={stylesBienes.input}
               placeholder="Color"
+              placeholderTextColor='#fff' // Color del placeholder
               value={newProduct.color}
               onChangeText={(text) => setNewProduct({ ...newProduct, color: text })}
             />
             <TextInput
               style={stylesBienes.input}
               placeholder="Talle"
+              placeholderTextColor='#fff' // Color del placeholder
               value={newProduct.talle}
               onChangeText={(text) => setNewProduct({ ...newProduct, talle: text })}
             />
             <TextInput
               style={stylesBienes.input}
               placeholder="Stock"
+              placeholderTextColor='#fff' // Color del placeholder
               value={newProduct.stock}
               onChangeText={(text) => setNewProduct({ ...newProduct, stock: text })}
             />
@@ -191,29 +199,31 @@ const stylesBienes = StyleSheet.create({
     flexDirection: 'column',
   },
   articleContainer: {
-    width: '80%',
-    margin: 10,
-    padding: 10,
+    width: '100%',    
+    padding: 20,
+    borderWidth:2,
+    margin:5,
+    borderColor:'#6A6A11',
     paddingTop: 15,
     textAlign: 'center',
     alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#f0f0f0',
+    alignSelf: 'center',    
     borderRadius: 5,
   },
   articleTitle: {
     fontWeight: 'bold',
-    fontSize: 24,
-    marginBottom: 5,
+    fontSize: 26,
+    marginBottom: 2,
+    color:'#fff'
   },
   floatingButton: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 30,
     right: 20,
-    backgroundColor: '#007bff',
-    width: 50,
+    backgroundColor: '#6A6A11',
+    width: 60,
     height: 50,
-    borderRadius: 25,
+    borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -221,10 +231,10 @@ const stylesBienes = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
   modalContent: {
-    backgroundColor: '#fff',
+    backgroundColor: '#111',
     width: '80%',
     borderRadius: 10,
     padding: 20,
@@ -234,16 +244,18 @@ const stylesBienes = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
+    color:'#fff'
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#6A6A11',
     borderRadius: 5,
+    color:'#fff',
     padding: 10,
     marginBottom: 10,
-  },
+  }, 
   addButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#6A6A11',
     padding: 15,
     borderRadius: 5,
     alignItems: 'center',

@@ -67,14 +67,14 @@ const MenuDesplegable = ({ menuAnimation, toggleMenu, nombre}) => {
 const styles = StyleSheet.create({
   menu: {
     position: 'absolute',
-    backgroundColor: 'rgb(20, 23, 26)',
-    top: Constants.statusBarHeight + 50,
+    backgroundColor: '#6A6A11',
+    top: Constants.statusBarHeight + 60,
     right: -250, 
     width: 250,
     height: 345,
-    paddingTop: 20,
+    paddingTop: 22,
     paddingRight: 20, 
-    zIndex:500,
+    zIndex:999,
   },
   menuItem: {
     color: 'white',    

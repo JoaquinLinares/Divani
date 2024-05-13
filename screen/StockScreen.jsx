@@ -98,17 +98,31 @@ const StockScreen = () => {
         <View style={stylesStock.modalContainer}>
           <View style={stylesStock.modalContent}>
             <Text style={stylesStock.modalTitle}>Modificar Stock</Text>
-            <Text>ID: {selectedArticle?.id}</Text>
-            <Text>Stock Actual: {selectedArticle?.stock}</Text>
+            <Text style={{color:'#fff'}}>ID: {selectedArticle?.id}</Text>
+            <Text style={{color:'#fff'}}>Stock Actual: {selectedArticle?.stock}</Text>
             <TextInput
               style={stylesStock.input}
               placeholder="Nuevo Stock"
+              placeholderTextColor='#fff' // Color del placeholder
               onChangeText={text => setNewStock(text)}
               keyboardType="numeric"
               value={newStock}
             />
-            <Button title="Guardar Cambios" onPress={handleChangeStock} />
-            <Button title="Cancelar" onPress={() => setSelectedArticle(null)} />
+          <TouchableHighlight 
+              style={stylesStock.button} 
+              underlayColor="#6A6A11" // Cambia el color de fondo cuando se presiona el botón
+              onPress={handleChangeStock}
+            >
+            <Text style={stylesStock.buttonText}>Guardar Cambios</Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight 
+            style={stylesStock.button} 
+            underlayColor="#6A6A11" // Cambia el color de fondo cuando se presiona el botón
+            onPress={() => setSelectedArticle(null)}
+          >
+            <Text style={stylesStock.buttonText}>Cancelar</Text>
+          </TouchableHighlight>
           </View>
         </View>
       </Modal>
@@ -119,22 +133,24 @@ const StockScreen = () => {
 const stylesStock = StyleSheet.create({
   container: {
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 20,
+    flexDirection: 'column',   
+    justifyContent:'center',         
+    paddingTop: 5,
   },
-  stockItem: {
-    width: '80%',
-    marginVertical: 10,
-    padding: 10,
-    backgroundColor: '#f0f0f0',
+  stockItem: {     
+    width: '100%',    
+    marginVertical: 5,
+    padding: 5,    
     borderRadius: 5,
+    borderWidth:2,
+    borderColor:'#6A6A11',
     alignItems: 'center',
   },
   colorText: {
     fontWeight: 'bold',
-    fontSize: 16,
+    paddingTop:25,
+    fontSize: 20,
+    color:'#fff'
   },
   stockText: {
     fontSize: 16,
@@ -149,10 +165,10 @@ const stylesStock = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
   modalContent: {
-    backgroundColor: 'white',
+    backgroundColor: '#111',
     borderRadius: 10,
     padding: 20,
     width: '80%',
@@ -160,17 +176,31 @@ const stylesStock = StyleSheet.create({
   },
   modalTitle: {
     fontSize: 20,
+    color:'#fff',
     fontWeight: 'bold',
     marginBottom: 10,
   },
   input: {
     width: '80%',
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#6A6A11',
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,
-    marginBottom: 10,
+    color:'#fff',
+    marginTop:10,
+    marginBottom: 12,
+  },
+  button: {
+    backgroundColor: '#6A6A11',
+    padding: 15,
+    borderRadius: 5,
+    margin:5,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 }
 );

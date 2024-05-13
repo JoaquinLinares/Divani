@@ -23,7 +23,6 @@ export const addAllItems = async () => {
         console.error("Error al agregar todos los elementos:", error);
     }
 };
-
   
   // Método para actualizar un elemento existente
   export const updateItem = async (id, updatedItem) => {

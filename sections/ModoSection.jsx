@@ -6,7 +6,7 @@ const ModoSection = () => {
    
   
   return (
-    <SectionSquare logo={<FontAwesome5 name="moon" size={24} color="white" />} title="Modo" />
+    <SectionSquare logo={<FontAwesome5 name="question" size={24} color="white" />} title="Proximamente" />
   );
 };
 

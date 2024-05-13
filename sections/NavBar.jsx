@@ -5,10 +5,10 @@ import Constants from 'expo-constants'; // Importa Constants desde expo-constant
 import { Link } from 'react-router-native';
 
 const Navbar = () => {
-  const menuAnimation = new Animated.Value(-250); // Valor inicial fuera de la pantalla
+  const menuAnimation = new Animated.Value(-260); // Valor inicial fuera de la pantalla
   
   const toggleMenu = () => {
-    const toValue = menuAnimation._value === -250 ? 0 : -250; // Determina el nuevo valor de la animación
+    const toValue = menuAnimation._value === -260 ? 0 : -260; // Determina el nuevo valor de la animación
     Animated.spring(menuAnimation, {
       toValue,
       useNativeDriver: false, // Necesario para que funcione en Android
@@ -79,17 +79,18 @@ const Navbar = () => {
   );
 };
 
+
 const styles = StyleSheet.create({
   navbar: {
     marginTop: Constants.statusBarHeight,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'rgb(20, 23, 26)',
     paddingVertical: 20,
     paddingHorizontal: 15,
     width: '100%',
-    zIndex:300,
+    zIndex:500
+    
   },
   leftIcon: {
     marginLeft: 10,
@@ -104,14 +105,15 @@ const styles = StyleSheet.create({
   },
   menu: {
     position: 'absolute',
-    backgroundColor: 'rgb(20, 23, 26)',
+    backgroundColor: '#6A6A11',
     top: Constants.statusBarHeight + 50,
     left: 0,
     width: 250,
     height:350,
     paddingTop: 20,
     paddingLeft: 20,
-    
+    borderRadius:5,
+    zIndex:999,
   },
   menuItem: {
     color: 'white',    
@@ -121,6 +123,7 @@ const styles = StyleSheet.create({
     paddingBottom:5,
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(255, 255, 255, 0.3)',
+    zIndex:999,
   },
   menuItemUlt: {
     color: 'white',    
@@ -128,7 +131,7 @@ const styles = StyleSheet.create({
     marginTop:10,
     marginBottom: 15,
     paddingBottom:5,
-    
+    zIndex:500
   },
 });
 

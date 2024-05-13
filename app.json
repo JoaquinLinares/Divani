@@ -14,13 +14,22 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.juliancarelli.Divani"
+      "bundleIdentifier": "com.juliancarelli.Divani",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Esta aplicación necesita acceso a la cámara para escanear códigos de barras.",
+        "NSPhotoLibraryUsageDescription": "Esta aplicación necesita acceso a la galería para guardar y cargar imágenes."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
       },
-      "package": "com.juliancarelli.Divani"
+      "package": "com.juliancarelli.Divani",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

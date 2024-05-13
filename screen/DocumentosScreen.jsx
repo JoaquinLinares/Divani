@@ -1,23 +1,22 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { Text, View, Animated, TouchableOpacity, BackHandler } from 'react-native';
-import { useNavigate } from 'react-router-native';
-import Constants from 'expo-constants';
-import { Link } from 'react-router-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View, TouchableOpacity, BackHandler, Animated, StyleSheet, ScrollView } from 'react-native';
+import { Link, useNavigate } from 'react-router-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import MenuDesplegable from '../components/MenuDesplegable';
 import styles from '../styles';
-import { useContextApp } from '../components/ContextApp';
+import MenuDesplegable from '../components/MenuDesplegable';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Constants from 'expo-constants';
 
 const DocumentosScreen = () => {
+    
+    const [DataMovements, setDataMovements] = useState([]);
+    const [filtroTipo, setFiltroTipo] = useState('todos'); // Estado para el filtro por tipo
     const history = useNavigate();
-    const { movimientos, setMovimientos } = useContextApp();
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const backAction = () => {
-            history('/'); 
-            return true; 
+            history('/');
+            return true;
         };
 
         const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
@@ -35,35 +34,52 @@ const DocumentosScreen = () => {
         }).start();
     };
 
-    useEffect(() => {
-        const loadMovimientos = async () => {
-            try {
-                const storedMovimientos = await AsyncStorage.getItem('movimientos');
-                if (storedMovimientos !== null) {
-                    setMovimientos(JSON.parse(storedMovimientos));
-                } else {
-                    // Si no hay movimientos guardados en AsyncStorage, usamos un array vacío
-                    setMovimientos([]);
-                }
-            } catch (error) {
-                console.error('Error al cargar movimientos desde AsyncStorage:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        loadMovimientos();
-    }, [setMovimientos]);
+    // Función para filtrar los documentos por tipo
+    const handleFiltrarTipo = (tipo) => {
+        setFiltroTipo(tipo);
+    };
 
-    if (loading) {
+    useEffect(() => {
+      async function getData() {
+        const data = await AsyncStorage.getItem('movements');
+        const dataParsed = data ? JSON.parse(data) : null;
+        if (dataParsed) {
+            // Filtra los documentos según el tipo seleccionado
+            let filteredData = dataParsed.movements;
+            if (filtroTipo !== 'todos') {
+                filteredData = filteredData.filter(item => item.tipo === filtroTipo);
+            }
+            setDataMovements(filteredData);
+        }
+      }
+      getData();
+      
+    }, [filtroTipo])
+    
+    // Función para renderizar los documentos
+    const renderMovimientos = () => {
         return (
-            <View style={styles.mainContainer}>
-                <Text>Cargando movimientos...</Text>
+            <View style={styles.sectionContainer}>
+                {/* Renderiza cada documento */}
+                {DataMovements.map((documento, index) => (
+                    <View key={index}>
+                        {index === 0 || DataMovements[index - 1].fecha !== documento.fecha ? (
+                            <Text style={stylesDocuments.fechaTitle}>{documento.fecha}</Text>
+                        ) : null}
+                        <View style={styles.movimientoContainer}>
+                            <Text style={styles.movimientoText}>
+                                {documento.producto} ({documento.cantidad}) [{documento.tipo}]
+                            </Text>
+                        </View>
+                    </View>
+                ))}
             </View>
         );
-    }
+    };
 
     return (
         <View style={styles.mainContainer}>
+            {/* NavBar de documentos */}
             <View style={[styles.navbar, { marginTop: Constants.statusBarHeight }]}>
                 <View style={styles.leftIcon}>
                     <Link to={'/'}>
@@ -71,31 +87,88 @@ const DocumentosScreen = () => {
                     </Link>
                 </View>
                 <Text style={styles.centerText}>Documentos</Text>
-                <View style={styles.rightIcon}>
-                    <FontAwesome5 name="file-excel" size={24} color="white" />             
-                </View>
+                
                 <View style={styles.rightIcon}>
                     <TouchableOpacity onPress={toggleMenu}>
                         <FontAwesome5 name='bars' size={24} color="white" />
                     </TouchableOpacity>
-                </View>          
+                </View>
             </View>
-            <View style={styles.sectionContainer}>
-                {movimientos.map((movimiento, index) => (
-                    <View key={index} style={styles.movimientoContainer}>
-                        {movimiento.tipo === 'entrada' && (
-                            <View>
-                                <Text style={styles.movimientoText}>Fecha: {movimiento.fecha}</Text>
-                                <Text style={styles.movimientoText}>Producto: {movimiento.producto}</Text>
-                                <Text style={styles.movimientoText}>Cantidad: {movimiento.cantidad}</Text>
-                            </View>
-                        )}
-                    </View>
-                ))}
+
+            <View style={stylesDocuments.buttonContainer}>
+                {/* Botones para filtrar por tipo */}
+                <TouchableOpacity onPress={() => handleFiltrarTipo('todos')} style={[stylesDocuments.filterButton, filtroTipo === 'todos' && stylesDocuments.activeFilterButton]}>
+                    <Text style={stylesDocuments.filterButtonText}>Todos</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => handleFiltrarTipo('entrada')} style={[stylesDocuments.filterButton, filtroTipo === 'entrada' && stylesDocuments.activeFilterButton]}>
+                    <Text style={stylesDocuments.filterButtonText}>Entrada</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => handleFiltrarTipo('salida')} style={[stylesDocuments.filterButton, filtroTipo === 'salida' && stylesDocuments.activeFilterButton]}>
+                    <Text style={stylesDocuments.filterButtonText}>Salida</Text>
+                </TouchableOpacity>
             </View>
+            <ScrollView>
+                {/* Renderiza los documentos según el tipo seleccionado */}
+                {renderMovimientos()}
+            </ScrollView>
             <MenuDesplegable menuAnimation={menuAnimation} toggleMenu={toggleMenu} nombre='documentos' />
         </View>
-    );  
-}
+    );
+};
+
+const stylesDocuments = StyleSheet.create({
+    mainContainer: {
+        flex: 1,
+    },    
+    leftIcon: {
+        marginLeft: 10,
+    },
+    centerText: {
+        color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    rightIcon: {
+        marginRight: 10,
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 10,
+    },
+    filterButton: {
+        padding: 10,
+        borderRadius: 5,
+        backgroundColor: '#6A6A11',
+    },
+    activeFilterButton: {
+        backgroundColor: 'rgba(166,166,24,0.2)',
+    },
+    filterButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+    },
+    sectionContainer: {
+        marginTop: 20,
+        paddingHorizontal: 10,
+    },
+    fechaTitle: {
+        
+        color:'#fff',
+        marginTop:15,
+        textAlign:'center',
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    movimientoContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 5,
+    },
+    movimientoText: {
+        fontSize: 16,
+    },
+});
 
 export default DocumentosScreen;

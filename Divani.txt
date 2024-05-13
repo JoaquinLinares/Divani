@@ -88,3 +88,27 @@
 
   //     fetchData();
   // }, []);  
+
+
+   ///////////////////////////////////////////////////////////////////////agregar espacio para movements
+   //  const addMovementsObject = async () => {
+    //     try {
+    //       const data = await AsyncStorage.getItem('db');
+    //       const jsonData = data != null ? JSON.parse(data) : {};
+      
+    //       // Si no existe el objeto "movements", agrégalo manualmente
+    //       if (!jsonData.hasOwnProperty('movements')) {
+    //         jsonData.movements = [];
+    //         jsonData.created_at = ""; // Asigna la fecha de creación si es necesario
+    //         await AsyncStorage.setItem('db', JSON.stringify(jsonData));
+    //         console.log("Objeto 'movements' agregado al almacenamiento.");
+    //       } else {
+    //         console.log("El objeto 'movements' ya existe en el almacenamiento.");
+    //       }
+    //     } catch (error) {
+    //       console.error('Error al agregar el objeto "movements" al almacenamiento:', error);
+    //     }
+    //   };
+      
+    //   // Llama a esta función para agregar el objeto "movements"
+    //   addMovementsObject();
