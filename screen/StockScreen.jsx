@@ -153,6 +153,7 @@ const stylesStock = StyleSheet.create({
     color:'#fff'
   },
   stockText: {
+    color:'#fff',
     fontSize: 16,
     marginTop: 5,
   },

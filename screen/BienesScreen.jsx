@@ -7,8 +7,9 @@ import { Link } from 'react-router-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import MenuDesplegable from '../components/MenuDesplegable';
 import { getAllItems } from '../services/async-storage/async-storage-read';
-import { addItem } from '../services/async-storage/async-storage-write'; // Importamos el nuevo método
+import {  addItem } from '../services/async-storage/async-storage-write'; // Importamos el nuevo método
 import styles from '../styles';
+
 
 const BienesScreen = () => {
   const [bienesStock, setBienesStock] = useState([]);
@@ -86,6 +87,14 @@ const BienesScreen = () => {
   };
 
   const handleCreateNewProduct = async () => {
+
+    const { id, articulo, color, talle, stock } = newProduct;
+
+    if (!id || !articulo || !color || !talle || !stock) {
+    // Opcional: puedes mostrar un mensaje de error al usuario aquí
+    alert('Por favor, complete todos los campos.');
+    return;
+  }
     try {
       await addItem(newProduct); // Usamos el nuevo método para agregar el nuevo producto
       setModalVisible(false);
@@ -147,7 +156,7 @@ const BienesScreen = () => {
 
             <TextInput
               style={stylesBienes.input}
-              placeholder='Nombre'
+              placeholder='Nombre (1218-NEGRO-37)'
               placeholderTextColor='#fff' // Color del placeholder
               value={newProduct.id}
               onChangeText={(text) => setNewProduct({ ...newProduct, id: text })}
