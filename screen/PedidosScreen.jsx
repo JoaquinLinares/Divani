@@ -95,11 +95,11 @@ const handleSizeChange = (text, rowIndex, columnIndex) => {
 
   // Verificar si foundStock no es nulo antes de actualizar el color
   if (data !== null && text <= data.stock) {
-    newData[rowIndex].rowData[columnIndex].color = 'green'; // Actualizar el color de la celda a verde
+    newData[rowIndex].rowData[columnIndex].color = 'white'; // Actualizar el color de la celda a verde
   } else if (data !== null && text > data.stock) {
     newData[rowIndex].rowData[columnIndex].color = 'red'; // Actualizar el color de la celda a rojo
   } else {
-    newData[rowIndex].rowData[columnIndex].color = 'black'; // Dejar en negro si no hay datos
+    newData[rowIndex].rowData[columnIndex].color = 'white'; // Dejar en negro si no hay datos
   }
 
   // Actualizar las cantidades en el estado
@@ -241,12 +241,12 @@ const handleSizeChange = (text, rowIndex, columnIndex) => {
       <body>
         <div class="container">
           <div class="header">
-            <h1>DIVANI calzados</h1>
+            <h1>Pedido</h1>
           </div>
           <div class="inputRectangle">
             <div class="containerDivani">
-              <div class="divaniText">DIVANI</div>
-              <div class="calzadosText">calzados</div>
+              <div class="divaniText">Fabrica</div>
+              <div class="calzadosText">de calzados</div>
             </div>
             <div class="inputGroupSeñor">
               <div class="inputLabel">Señor</div>
@@ -267,8 +267,8 @@ const handleSizeChange = (text, rowIndex, columnIndex) => {
               <div class="input">${fecha}</div>
             </div>
             <div class="containerDivani">
-              <div class="divaniText2">DIVANI</div>
-              <div class="calzadosText2">calzados</div>
+              <div class="divaniText2">Fabrica</div>
+              <div class="calzadosText2">de calzados</div>
             </div>
           </div>
           <table class="table">
@@ -284,7 +284,7 @@ const handleSizeChange = (text, rowIndex, columnIndex) => {
                   <td>${colorInputs[rowIndex]}</td>
                   <td></td>
                   ${rowData.rowData.map((cellData, columnIndex) => `
-                    <td style="color: ${getQuantityColor(rowIndex, columnIndex)}">${cellData.value}</td>
+                    <td style="background-color: ${getQuantityColor(rowIndex, columnIndex)}">${cellData.value}</td>
                   `).join('')}
                 </tr>
               `).join('')}
@@ -330,7 +330,7 @@ const getQuantityColor = (rowIndex, columnIndex) => {
       if (!file.canceled && file.assets && file.assets.length > 0) {
         const selectedFile = file.assets[0];
         const options = {
-          recipients: ['destinatario@example.com'], // La dirección de correo electrónico del destinatario
+          recipients: ['lafabricadecalzados.admi@gmail.com'], // La dirección de correo electrónico del destinatario
           subject: 'Pedido',         
           attachments: [selectedFile.uri], // Adjunta el archivo seleccionado al correo electrónico
         }; 
@@ -348,125 +348,127 @@ const getQuantityColor = (rowIndex, columnIndex) => {
   
 
   return (
-    <ScrollView style={{ flex: 1 }}>
-    {loading ? (
-      <View style={stylesPedidos.loadingContainer}>
-        <ActivityIndicator size="large" color="#0000ff" />
-      </View>
-    ) : (
-      <View style={styles.mainContainer}>
-        <View style={[styles.navbar, { marginTop: Constants.statusBarHeight }]}>
-          <View style={styles.leftIcon}>
-            <Link to={'/'}>
-              <FontAwesome5 name="arrow-left" size={24} color="white" />
-            </Link>
-          </View>
-          <Text style={styles.centerText}>Pedidos</Text>
-          <TouchableOpacity  onPress={generatePDF}>
-            <View style={styles.rightIcon}>
-              <FontAwesome5 name="print" size={24} color="white" />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={sendEmail}>
-          <View style={styles.rightIcon}>
-            <FontAwesome5 name="envelope" size={24} color="white" />
-          </View>
-        </TouchableOpacity>
-          <View style={styles.rightIcon}>
-            <TouchableOpacity onPress={toggleMenu}>
-              <FontAwesome5 name='bars' size={24} color="white" />
-            </TouchableOpacity>
-          </View>
+    <View style={{ flex: 1 }}>
+      {loading && (
+        <View style={stylesPedidos.loadingContainer}>
+          <ActivityIndicator size="large" color="#0000ff" />
         </View>
-        <MenuDesplegable menuAnimation={menuAnimation} toggleMenu={toggleMenu} nombre='pedidos' />
-
-        
-        <ScrollView horizontal={true}>
-          <View>
-            <View style={stylesPedidos.ContainerImputsGeneral}>
-              <View style={stylesPedidos.ContainerDivani}>
-                <Text style={stylesPedidos.divaniText}>DIVANI</Text>
-                <Text style={stylesPedidos.calzadosText}>calzados</Text>
+      )}
+      {!loading && (
+        <ScrollView style={{ flex: 1 }}>
+          <View style={styles.mainContainer}>
+            <View style={[styles.navbar, { marginTop: Constants.statusBarHeight }]}>
+              <View style={styles.leftIcon}>
+                <Link to={'/'}>
+                  <FontAwesome5 name="arrow-left" size={24} color="white" />
+                </Link>
               </View>
-              
-              <View style={stylesPedidos.inputGroupSeñor}>
-                <Text style={stylesPedidos.inputLabel}>Señor</Text>
-                <TextInput style={stylesPedidos.inputSeñor} value={senor} onChangeText={setSenor} />
-                <Text style={stylesPedidos.inputLabel}>Localidad</Text>
-                <TextInput style={[stylesPedidos.inputloca]}  value={localidad} onChangeText={setLocalidad}/>
-              </View>                
-              
-              <View style={stylesPedidos.inputGroupDire}>
-                <Text style={stylesPedidos.inputLabel}>Dirección</Text>
-                <TextInput style={[stylesPedidos.input, { width: 450 }] } value={direccion} onChangeText={setDireccion} />
-                <Text style={stylesPedidos.inputLabel}>Embalado</Text>
-                <TextInput style={[stylesPedidos.inputloca]}  value={embalado} onChangeText={setEmbalado}/>
-              </View>                
-              
-              <View style={stylesPedidos.inputGroupDia}>
-                <Text style={stylesPedidos.inputLabel}>Día</Text>
-                <TextInput style={[stylesPedidos.input, { width: 450 }]} value={dia} onChangeText={setDia} />
-                <Text style={stylesPedidos.inputLabel}>Fecha</Text>
-                <TextInput style={[stylesPedidos.input, { width: 450 }]} value={fecha} onChangeText={setFecha} />
-              </View>
-              
-              <View style={stylesPedidos.ContainerDivani2}>
-                <Text style={stylesPedidos.divaniText2}>DIVANI</Text>
-                <Text style={stylesPedidos.calzadosText2}>calzados</Text>
+              <Text style={styles.centerText}>Pedidos</Text>
+              <TouchableOpacity onPress={generatePDF}>
+                <View style={styles.rightIcon}>
+                  <FontAwesome5 name="print" size={24} color="white" />
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={sendEmail}>
+                <View style={styles.rightIcon}>
+                  <FontAwesome5 name="envelope" size={24} color="white" />
+                </View>
+              </TouchableOpacity>
+              <View style={styles.rightIcon}>
+                <TouchableOpacity onPress={toggleMenu}>
+                  <FontAwesome5 name="bars" size={24} color="white" />
+                </TouchableOpacity>
               </View>
             </View>
-            
-            <View>
-              <View style={{ flexDirection: 'row' }}>
-                {tableHead.map((title, colIndex) => (
-                  <View key={colIndex} style={[stylesPedidos.cell, { width: widthArr[colIndex].width }]}>
-                    <Text style={stylesPedidos.text}>{title}</Text>
+            <MenuDesplegable menuAnimation={menuAnimation} toggleMenu={toggleMenu} nombre='pedidos' />
+  
+            <ScrollView horizontal={true}>
+              <View>
+                <View style={stylesPedidos.ContainerImputsGeneral}>
+                  <View style={stylesPedidos.ContainerDivani}>
+                    <Text style={stylesPedidos.divaniText}>FABRICA</Text>
+                    <Text style={stylesPedidos.calzadosText}>de calzados</Text>
                   </View>
-                ))}
-              </View>
-              {rowDataStates.map((rowDataState, rowIndex) => (
-                <View key={rowIndex} style={[stylesPedidos.row, rowIndex % 2 && stylesPedidos.rowOdd]}>
-                  <TextInput
-                    style={[stylesPedidos.cell, { width: widthArr[0].width }]}
-                    value={articleInputs[rowIndex]} // Usamos el estado para el valor del artículo
-                    onChangeText={(text) => handleArticleChange(text, rowIndex)}
-                    onBlur={() => handleRowChange(rowIndex)}
-                  />
-                  <TextInput
-                    style={[stylesPedidos.cell, { width: widthArr[1].width }]}
-                    value={colorInputs[rowIndex]} // Usamos el estado para el valor del color
-                    onChangeText={(text) => handleColorChange(text, rowIndex)}
-                    onBlur={() => handleRowChange(rowIndex)}
-                  />
-                  <TextInput
-                    style={[stylesPedidos.cell, { width: widthArr[2].width }]}
-                  />
-                  {['20', '21', '22', '23', '24', '25', '26', '27', '28', '29',
-                  '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', 
-                  '41', '42', '43', '44', '45'].map((size, columnIndex) => (
-                    <TextInput
-                      key={columnIndex}
-                      style={[
-                        stylesPedidos.cell,
-                        { width: widthArr[columnIndex + 3].width },
-                        // Estilo condicional
-                        { color: getQuantityColor(rowIndex, columnIndex) }
-                      ]}
-                      value={rowDataState.rowData[columnIndex].value}
-                      onChangeText={(text) => handleSizeChange(text, rowIndex, columnIndex)}                 
-                      keyboardType='numeric'
-                      onBlur={() => handleRowChange(rowIndex)}
-                    />
+  
+                  <View style={stylesPedidos.inputGroupSeñor}>
+                    <Text style={stylesPedidos.inputLabel}>Señor</Text>
+                    <TextInput style={stylesPedidos.inputSeñor} value={senor} onChangeText={setSenor} />
+                    <Text style={stylesPedidos.inputLabel}>Localidad</Text>
+                    <TextInput style={[stylesPedidos.inputloca]} value={localidad} onChangeText={setLocalidad} />
+                  </View>
+  
+                  <View style={stylesPedidos.inputGroupDire}>
+                    <Text style={stylesPedidos.inputLabel}>Dirección</Text>
+                    <TextInput style={[stylesPedidos.input, { width: 450 }]} value={direccion} onChangeText={setDireccion} />
+                    <Text style={stylesPedidos.inputLabel}>Embalado</Text>
+                    <TextInput style={[stylesPedidos.inputloca]} value={embalado} onChangeText={setEmbalado} />
+                  </View>
+  
+                  <View style={stylesPedidos.inputGroupDia}>
+                    <Text style={stylesPedidos.inputLabel}>Día</Text>
+                    <TextInput style={[stylesPedidos.input, { width: 450 }]} value={dia} onChangeText={setDia} />
+                    <Text style={stylesPedidos.inputLabel}>Fecha</Text>
+                    <TextInput style={[stylesPedidos.input, { width: 450 }]} value={fecha} onChangeText={setFecha} />
+                  </View>
+  
+                  <View style={stylesPedidos.ContainerDivani2}>
+                    <Text style={stylesPedidos.divaniText2}>Fabrica</Text>
+                    <Text style={stylesPedidos.calzadosText2}>de calzados</Text>
+                  </View>
+                </View>
+  
+                <View>
+                  <View style={{ flexDirection: 'row' }}>
+                    {tableHead.map((title, colIndex) => (
+                      <View key={colIndex} style={[stylesPedidos.cell, { width: widthArr[colIndex].width }]}>
+                        <Text style={stylesPedidos.text}>{title}</Text>
+                      </View>
+                    ))}
+                  </View>
+                  {rowDataStates.map((rowDataState, rowIndex) => (
+                    <View key={rowIndex} style={[stylesPedidos.row, rowIndex % 2 && stylesPedidos.rowOdd]}>
+                      <TextInput
+                        style={[stylesPedidos.cell, { width: widthArr[0].width }]}
+                        value={articleInputs[rowIndex]} // Usamos el estado para el valor del artículo
+                        onChangeText={(text) => handleArticleChange(text, rowIndex)}
+                        onBlur={() => handleRowChange(rowIndex)}
+                      />
+                      <TextInput
+                        style={[stylesPedidos.cell, { width: widthArr[1].width }]}
+                        value={colorInputs[rowIndex]} // Usamos el estado para el valor del color
+                        onChangeText={(text) => handleColorChange(text, rowIndex)}
+                        onBlur={() => handleRowChange(rowIndex)}
+                      />
+                      <TextInput
+                        style={[stylesPedidos.cell, { width: widthArr[2].width }]}
+                      />
+                      {['20', '21', '22', '23', '24', '25', '26', '27', '28', '29',
+                        '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40',
+                        '41', '42', '43', '44', '45'].map((size, columnIndex) => (
+                          <TextInput
+                            key={columnIndex}
+                            style={[
+                              stylesPedidos.cell,
+                              { width: widthArr[columnIndex + 3].width },
+                              // Estilo condicional
+                              { backgroundColor: getQuantityColor(rowIndex, columnIndex) }
+                            ]}
+                            value={rowDataState.rowData[columnIndex].value}
+                            onChangeText={(text) => handleSizeChange(text, rowIndex, columnIndex)}
+                            keyboardType='numeric'
+                            onBlur={() => handleRowChange(rowIndex)}
+                          />
+                        ))}
+                    </View>
                   ))}
                 </View>
-              ))}
-            </View>
+              </View>
+            </ScrollView>
           </View>
         </ScrollView>
-      </View>
-    )}
-  </ScrollView>
-);  
+      )}
+    </View>
+  );
   
 };
 
@@ -527,7 +529,13 @@ const stylesPedidos = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 999
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 999,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)'
   },
 });
  
