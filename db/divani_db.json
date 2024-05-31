@@ -88,14 +88,14 @@
       "articulo": 1120,
       "color": "negro",
       "talle": 36,
-      "stock": 9
+      "stock": 8
     },
     {
       "id": "1120-NEGRO-37",
       "articulo": 1120,
       "color": "negro",
       "talle": 37,
-      "stock": 15
+      "stock": 14
     },
     {
       "id": "1120-NEGRO-38",
@@ -116,7 +116,7 @@
       "articulo": 1120,
       "color": "negro",
       "talle": 40,
-      "stock": 2
+      "stock": 1
     },
     {
       "id": "1120-NEGRO-41",
@@ -130,7 +130,7 @@
       "articulo": 1120,
       "color": "negro",
       "talle": 42,
-      "stock": 6
+      "stock": 4
     },
     {
       "id": "1120-NEGRO-43",
@@ -144,14 +144,14 @@
       "articulo": 1120,
       "color": "negro",
       "talle": 44,
-      "stock": 0
+      "stock": 4
     },
     {
       "id": "1120-NEGRO-45",
       "articulo": 1120,
       "color": "negro",
       "talle": 45,
-      "stock": 2
+      "stock": 7
     },
 
     {
@@ -166,7 +166,7 @@
       "articulo": 1120,
       "color": "NGCARAMELO",
       "talle": 36,
-      "stock":22
+      "stock":31
     },
     {
       "id": "1120-NGCARAMELO-37",
@@ -180,21 +180,21 @@
       "articulo": 1120,
       "color": "NGCARAMELO",
       "talle": 38,
-      "stock": 17
+      "stock": 16
     },
     {
       "id": "1120-NGCARAMELO-39",
       "articulo": 1120,
       "color": "NGCARAMELO",
       "talle": 39,
-      "stock": 16
+      "stock": 26
     },
     {
       "id": "1120-NGCARAMELO-40",
       "articulo": 1120,
       "color": "NGCARAMELO",
       "talle": 40,
-      "stock": 7
+      "stock": 16
     },
     {
       "id": "1120-NGCARAMELO-41",
@@ -208,35 +208,35 @@
       "articulo": 1120,
       "color": "NGCARAMELO",
       "talle": 42,
-      "stock": 48
+      "stock": 47
     },
     {
       "id": "1120-NGCARAMELO-43",
       "articulo": 1120,
       "color": "NGCARAMELO",
       "talle": 43,
-      "stock": 24
+      "stock": 22
     },
     {
       "id": "1120-NGCARAMELO-44",
       "articulo": 1120,
       "color": "NGCARAMELO",
       "talle": 44,
-      "stock": 13
+      "stock": 22
     },
     {
       "id": "1120-NGCARAMELO-45",
       "articulo": 1120,
       "color": "NGCARAMELO",
       "talle": 45,
-      "stock": 7
+      "stock": 11
     },
     {
       "id": "1120-NGNEGRO-35",
       "articulo": 1120,
       "color": "NGNEGRO",
       "talle": 35,
-      "stock": 1
+      "stock": 6
     },
     {
       "id": "1120-NGNEGRO-36",
@@ -250,21 +250,21 @@
       "articulo": 1120,
       "color": "NGNEGRO",
       "talle": 37,
-      "stock": 8
+      "stock": 14
     },
     {
       "id": "1120-NGNEGRO-38",
       "articulo": 1120,
       "color": "NGNEGRO",
       "talle": 38,
-      "stock": 1
+      "stock": 8
     },
     {
       "id": "1120-NGNEGRO-39",
       "articulo": 1120,
       "color": "NGNEGRO",
       "talle": 39,
-      "stock": 38
+      "stock": 43
     },
     {
       "id": "1120-NGNEGRO-40",
@@ -278,21 +278,21 @@
       "articulo": 1120,
       "color": "NGNEGRO",
       "talle": 41,
-      "stock": 37
+      "stock": 36
     },
     {
       "id": "1120-NGNEGRO-42",
       "articulo": 1120,
       "color": "NGNEGRO",
       "talle": 42,
-      "stock": 13
+      "stock": 11
     },
     {
       "id": "1120-NGNEGRO-43",
       "articulo": 1120,
       "color": "NGNEGRO",
       "talle": 43,
-      "stock": 6
+      "stock": 5
     },
     {
       "id": "1120-NGNEGRO-44",
@@ -328,14 +328,14 @@
       "articulo": 1218,
       "color": "NEGRO",
       "talle": 37,
-      "stock": 28
+      "stock": 26
     },
     {
       "id": "1218-NEGRO-38",
       "articulo": 1218,
       "color": "NEGRO",
       "talle": 38,
-      "stock": 21
+      "stock": 19
     },
     {
       "id": "1218-NEGRO-39",
@@ -349,7 +349,7 @@
       "articulo": 1218,
       "color": "NEGRO",
       "talle": 40,
-      "stock": 61
+      "stock": 60
     },
     {
       "id": "1218-NEGRO-41",
@@ -363,21 +363,21 @@
       "articulo": 1218,
       "color": "NEGRO",
       "talle": 42,
-      "stock": 24
+      "stock": 20
     },
     {
       "id": "1218-NEGRO-43",
       "articulo": 1218,
       "color": "NEGRO",
       "talle": 43,
-      "stock": 24
+      "stock": 30
     },
     {
       "id": "1218-NEGRO-44",
       "articulo": 1218,
       "color": "NEGRO",
       "talle": 44,
-      "stock": 40
+      "stock": 38
     },
     {
       "id": "1218-NEGRO-45",
@@ -440,7 +440,7 @@
       "articulo": 1218,
       "color": "NGCARAMELO",
       "talle": 42,
-      "stock": 7
+      "stock": 6
     },
     {
       "id": "1218-NGCARAMELO-43",
@@ -482,7 +482,7 @@
       "articulo": 1218,
       "color": "VERDE",
       "talle": 37,
-      "stock": 0
+      "stock": 21
     },
     {
       "id": "1218-VERDE-38",
@@ -566,28 +566,28 @@
       "articulo": 1218,
       "color": "AZUL",
       "talle": 38,
-      "stock": 20
+      "stock": 19
     },
     {
       "id": "1218-AZUL-39",
       "articulo": 1218,
       "color": "AZUL",
       "talle": 39,
-      "stock": 37
+      "stock": 35
     },
     {
       "id": "1218-AZUL-40",
       "articulo": 1218,
       "color": "AZUL",
       "talle": 40,
-      "stock": 48
+      "stock": 46
     },
     {
       "id": "1218-AZUL-41",
       "articulo": 1218,
       "color": "AZUL",
       "talle": 41,
-      "stock": 61
+      "stock": 59
     },
     {
       "id": "1218-AZUL-42",
@@ -601,7 +601,7 @@
       "articulo": 1218,
       "color": "AZUL",
       "talle": 43,
-      "stock": 11
+      "stock": 10
     },
     {
       "id": "1218-AZUL-44",
@@ -630,7 +630,7 @@
       "articulo": 1216,
       "color": "NEGRO",
       "talle": 36,
-      "stock": 33
+      "stock": 29
     },
     {
       "id": "1216-NEGRO-37",
@@ -644,14 +644,14 @@
       "articulo": 1216,
       "color": "NEGRO",
       "talle": 38,
-      "stock": 48
+      "stock": 43
     },
     {
       "id": "1216-NEGRO-39",
       "articulo": 1216,
       "color": "NEGRO",
       "talle": 39,
-      "stock": 57
+      "stock": 53
     },
     {
       "id": "1216-NEGRO-40",
@@ -665,7 +665,7 @@
       "articulo": 1216,
       "color": "NEGRO",
       "talle": 41,
-      "stock": 62
+      "stock": 58
     },
     {
       "id": "1216-NEGRO-42",
@@ -679,7 +679,7 @@
       "articulo": 1216,
       "color": "NEGRO",
       "talle": 43,
-      "stock": 37
+      "stock": 32
     },
     {
       "id": "1216-NEGRO-44",
@@ -693,7 +693,7 @@
       "articulo": 1216,
       "color": "NEGRO",
       "talle": 45,
-      "stock": 32
+      "stock": 30
     },
     {
       "id": "1216-NGCARAMELO-35",
@@ -721,14 +721,14 @@
       "articulo": 1216,
       "color": "NGCARAMELO",
       "talle": 38,
-      "stock": 10
+      "stock": 9
     },
     {
       "id": "1216-NGCARAMELO-39",
       "articulo": 1216,
       "color": "NGCARAMELO",
       "talle": 39,
-      "stock": 15
+      "stock": 10
     },
     {
       "id": "1216-NGCARAMELO-40",
@@ -749,14 +749,14 @@
       "articulo": 1216,
       "color": "NGCARAMELO",
       "talle": 42,
-      "stock": 15
+      "stock": 11
     },
     {
       "id": "1216-NGCARAMELO-43",
       "articulo": 1216,
       "color": "NGCARAMELO",
       "talle": 43,
-      "stock": 7
+      "stock": 4
     },
     {
       "id": "1216-NGCARAMELO-44",
@@ -777,56 +777,56 @@
       "articulo": 1216,
       "color": "NGNEGRO",
       "talle": 35,
-      "stock": 30
+      "stock": 29
     },
     {
       "id": "1216-NGNEGRO-36",
       "articulo": 1216,
       "color": "NGNEGRO",
       "talle": 36,
-      "stock": 32
+      "stock": 28
     },
     {
       "id": "1216-NGNEGRO-37",
       "articulo": 1216,
       "color": "NGNEGRO",
       "talle": 37,
-      "stock": 18
+      "stock": 12
     },
     {
       "id": "1216-NGNEGRO-38",
       "articulo": 1216,
       "color": "NGNEGRO",
       "talle": 38,
-      "stock": 17
+      "stock": 12
     },
     {
       "id": "1216-NGNEGRO-39",
       "articulo": 1216,
       "color": "NGNEGRO",
       "talle": 39,
-      "stock": 31
+      "stock": 29
     },
     {
       "id": "1216-NGNEGRO-40",
       "articulo": 1216,
       "color": "NGNEGRO",
       "talle": 40,
-      "stock": 42
+      "stock": 41
     },
     {
       "id": "1216-NGNEGRO-41",
       "articulo": 1216,
       "color": "NGNEGRO",
       "talle": 41,
-      "stock": 36
+      "stock": 32
     },
     {
       "id": "1216-NGNEGRO-42",
       "articulo": 1216,
       "color": "NGNEGRO",
       "talle": 42,
-      "stock": 22
+      "stock": 19
     },
     {
       "id": "1216-NGNEGRO-43",
@@ -840,14 +840,14 @@
       "articulo": 1216,
       "color": "NGNEGRO",
       "talle": 44,
-      "stock": 12
+      "stock": 10
     },
     {
       "id": "1216-NGNEGRO-45",
       "articulo": 1216,
       "color": "NGNEGRO",
       "talle": 45,
-      "stock": 11
+      "stock": 9
     },
 
     {
@@ -911,21 +911,21 @@
       "articulo": 40,
       "color": "NEGRO",
       "talle": 35,
-      "stock": 9
+      "stock": 7
     },
     {
       "id": "040-NEGRO-36",
       "articulo": 40,
       "color": "NEGRO",
       "talle": 36,
-      "stock": 5
+      "stock": 10
     },
     {
       "id": "040-NEGRO-37",
       "articulo": 40,
       "color": "NEGRO",
       "talle": 37,
-      "stock": 7
+      "stock": 10
     },
     {
       "id": "040-NEGRO-38",
@@ -939,42 +939,42 @@
       "articulo": 40,
       "color": "NEGRO",
       "talle": 39,
-      "stock": 3
+      "stock": 15
     },
     {
       "id": "040-NEGRO-40",
       "articulo": 40,
       "color": "NEGRO",
       "talle": 40,
-      "stock": 3
+      "stock": 10
     },
     {
       "id": "040-NEGRO-41",
       "articulo": 40,
       "color": "NEGRO",
       "talle": 41,
-      "stock": 10
+      "stock": 13
     },
     {
       "id": "040-NEGRO-42",
       "articulo": 40,
       "color": "NEGRO",
       "talle": 42,
-      "stock": 9
+      "stock": 15
     },
     {
       "id": "040-NEGRO-43",
       "articulo": 40,
       "color": "NEGRO",
       "talle": 43,
-      "stock": 7
+      "stock": 11
     },
     {
       "id": "040-NEGRO-44",
       "articulo": 40,
       "color": "NEGRO",
       "talle": 44,
-      "stock": 13
+      "stock": 11
     },         
     {
       "id": "040-BLANCO-27",
@@ -1037,28 +1037,28 @@
       "articulo": 40,
       "color": "BLANCO",
       "talle": 35,
-      "stock": 0
+      "stock": 6
     },
     {
       "id": "040-BLANCO-36",
       "articulo": 40,
       "color": "BLANCO",
       "talle": 36,
-      "stock": 7
+      "stock": 5
     },
     {
       "id": "040-BLANCO-37",
       "articulo": 40,
       "color": "BLANCO",
       "talle": 37,
-      "stock": 6
+      "stock": 7
     },
     {
       "id": "040-BLANCO-38",
       "articulo": 40,
       "color": "BLANCO",
       "talle": 38,
-      "stock": 5
+      "stock": 7
     },
     {
       "id": "040-BLANCO-39",
@@ -1072,21 +1072,21 @@
       "articulo": 40,
       "color": "BLANCO",
       "talle": 40,
-      "stock": 16
+      "stock": 20
     },
     {
       "id": "040-BLANCO-41",
       "articulo": 40,
       "color": "BLANCO",
       "talle": 41,
-      "stock": 6
+      "stock": 9
     },
     {
       "id": "040-BLANCO-42",
       "articulo": 40,
       "color": "BLANCO",
       "talle": 42,
-      "stock": 6
+      "stock": 11
     },
     {
       "id": "040-BLANCO-43",
@@ -1100,7 +1100,7 @@
       "articulo": 40,
       "color": "BLANCO",
       "talle": 44,
-      "stock": 22
+      "stock": 25
     },
     {
       "id": "040-NGNEGRO-27",
@@ -1311,14 +1311,14 @@
       "articulo": 40,
       "color": "ROJO",
       "talle": 42,
-      "stock": 9
+      "stock": 8
     },
     {
       "id": "040-ROJO-43",
       "articulo": 40,
       "color": "ROJO",
       "talle": 43,
-      "stock": 10
+      "stock": 6
     },
     {
       "id": "040-ROJO-44",
@@ -1388,21 +1388,21 @@
       "articulo": 40,
       "color": "BEIGE",
       "talle": 35,
-      "stock": 3
+      "stock": 9
     },
     {
       "id": "040-BEIGE-36",
       "articulo": 40,
       "color": "BEIGE",
       "talle": 36,
-      "stock": 3
+      "stock": 6
     },
     {
       "id": "040-BEIGE-37",
       "articulo": 40,
       "color": "BEIGE",
       "talle": 37,
-      "stock": 5
+      "stock": 7
     },
     {
       "id": "040-BEIGE-38",
@@ -1416,14 +1416,14 @@
       "articulo": 40,
       "color": "BEIGE",
       "talle": 39,
-      "stock": 6
+      "stock": 7
     },
     {
       "id": "040-BEIGE-40",
       "articulo": 40,
       "color": "BEIGE",
       "talle": 40,
-      "stock": 3
+      "stock": 5
     },
     {
       "id": "040-BEIGE-41",
@@ -1437,7 +1437,7 @@
       "articulo": 40,
       "color": "BEIGE",
       "talle": 42,
-      "stock": 6
+      "stock": 7
     },
     {
       "id": "040-BEIGE-43",
@@ -1451,7 +1451,7 @@
       "articulo": 40,
       "color": "BEIGE",
       "talle": 44,
-      "stock": 7
+      "stock": 8
     },
     
     {
@@ -1466,7 +1466,7 @@
       "articulo": 40,
       "color": "BORDO",
       "talle": 36,
-      "stock": 5
+      "stock": 6
     },
     {
       "id": "040-BORDO-37",
@@ -1480,7 +1480,7 @@
       "articulo": 40,
       "color": "BORDO",
       "talle": 38,
-      "stock": 8
+      "stock": 7
     },
     {
       "id": "040-BORDO-39",
@@ -1599,21 +1599,21 @@
       "articulo": 42,
       "color": "NGJEAN",
       "talle": 35,
-      "stock": 9
+      "stock": 8
     },
     {
       "id": "042-NGJEAN-36",
       "articulo": 42,
       "color": "NGJEAN",
       "talle": 36,
-      "stock": 2
+      "stock": 3
     },
     {
       "id": "042-NGJEAN-37",
       "articulo": 42,
       "color": "NGJEAN",
       "talle": 37,
-      "stock": 0
+      "stock": 1
     },
     {
       "id": "042-NGJEAN-38",
@@ -1676,42 +1676,42 @@
       "articulo": 42,
       "color": "NEGRO",
       "talle": 36,
-      "stock": 5
+      "stock": 12
     },
     {
       "id": "042-NEGRO-37",
       "articulo": 42,
       "color": "NEGRO",
       "talle": 37,
-      "stock": 6
+      "stock": 12
     },
     {
       "id": "042-NEGRO-38",
       "articulo": 42,
       "color": "NEGRO",
       "talle": 38,
-      "stock": 5
+      "stock": 11
     },
     {
       "id": "042-NEGRO-39",
       "articulo": 42,
       "color": "NEGRO",
       "talle": 39,
-      "stock": 8
+      "stock": 9
     },
     {
       "id": "042-NEGRO-40",
       "articulo": 42,
       "color": "NEGRO",
       "talle": 40,
-      "stock": 5
+      "stock": 8
     },
     {
       "id": "042-NEGRO-41",
       "articulo": 42,
       "color": "NEGRO",
       "talle": 41,
-      "stock": 11
+      "stock": 12
     },
     {
       "id": "042-NEGRO-42",
@@ -1732,7 +1732,7 @@
       "articulo": 42,
       "color": "NEGRO",
       "talle": 44,
-      "stock": 7
+      "stock": 5
     },
     {
       "id": "042-BORDO-35",
@@ -1746,21 +1746,21 @@
       "articulo": 42,
       "color": "BORDO",
       "talle": 36,
-      "stock": 10
+      "stock": 11
     },
     {
       "id": "042-BORDO-37",
       "articulo": 42,
       "color": "BORDO",
       "talle": 37,
-      "stock": 7
+      "stock": 8
     },
     {
       "id": "042-BORDO-38",
       "articulo": 42,
       "color": "BORDO",
       "talle": 38,
-      "stock": 7
+      "stock": 10
     },
     {
       "id": "042-BORDO-39",
@@ -1781,14 +1781,14 @@
       "articulo": 42,
       "color": "BORDO",
       "talle": 41,
-      "stock": 5
+      "stock": 8
     },
     {
       "id": "042-BORDO-42",
       "articulo": 42,
       "color": "BORDO",
       "talle": 42,
-      "stock": 5
+      "stock": 9
     },
     {
       "id": "042-BORDO-43",
@@ -1823,7 +1823,7 @@
       "articulo": 42,
       "color": "BEIGE",
       "talle": 37,
-      "stock": 9
+      "stock": 10
     },
     {
       "id": "042-BEIGE-38",
@@ -1844,7 +1844,7 @@
       "articulo": 42,
       "color": "BEIGE",
       "talle": 40,
-      "stock": 3
+      "stock": 4
     },
     {
       "id": "042-BEIGE-41",
@@ -1872,7 +1872,7 @@
       "articulo": 42,
       "color": "BEIGE",
       "talle": 44,
-      "stock": 2
+      "stock": 8
     },
     {
       "id": "042-BLANCO-35",
@@ -1893,14 +1893,14 @@
       "articulo": 42,
       "color": "BLANCO",
       "talle": 37,
-      "stock": 0
+      "stock": 6
     },
     {
       "id": "042-BLANCO-38",
       "articulo": 42,
       "color": "BLANCO",
       "talle": 38,
-      "stock": 1
+      "stock": 6
     },
     {
       "id": "042-BLANCO-39",
@@ -1914,7 +1914,7 @@
       "articulo": 42,
       "color": "BLANCO",
       "talle": 40,
-      "stock": 8
+      "stock": 7
     },
     {
       "id": "042-BLANCO-41",
@@ -1935,7 +1935,7 @@
       "articulo": 42,
       "color": "BLANCO",
       "talle": 43,
-      "stock": 5
+      "stock": 4
     },
     {
       "id": "042-BLANCO-44",
@@ -2323,116 +2323,116 @@
       "stock": 4
     },
     {
-      "id": "450-NEGRO-38",
+      "id": "450-CORDON-38",
       "articulo": 450,
-      "color": "NEGRO",
+      "color": "CORDON",
       "talle": 38,
-      "stock": 14
+      "stock": 11
     },
     {
-      "id": "450-NEGRO-39",
+      "id": "450-CORDON-39",
       "articulo": 450,
-      "color": "NEGRO",
+      "color": "CORDON",
       "talle": 39,
-      "stock": 33
+      "stock": 35
     },
     {
-      "id": "450-NEGRO-40",
+      "id": "450-CORDON-40",
       "articulo": 450,
-      "color": "NEGRO",
+      "color": "CORDON",
       "talle": 40,
-      "stock": 49
+      "stock": 66
     },
     {
-      "id": "450-NEGRO-41",
+      "id": "450-CORDON-41",
       "articulo": 450,
-      "color": "NEGRO",
+      "color": "CORDON",
       "talle": 41,
-      "stock": 67
+      "stock": 103
     },
     {
-      "id": "450-NEGRO-42",
+      "id": "450-CORDON-42",
       "articulo": 450,
-      "color": "NEGRO",
+      "color": "CORDON",
       "talle": 42,
-      "stock": 38
+      "stock": 64
     },
     {
-      "id": "450-NEGRO-43",
+      "id": "450-CORDON-43",
       "articulo": 450,
-      "color": "NEGRO",
+      "color": "CORDON",
       "talle": 43,
-      "stock": 23
-    },
-    {
-      "id": "450-NEGRO-44",
-      "articulo": 450,
-      "color": "NEGRO",
-      "talle": 44,
-      "stock": 5
-    },
-    {
-      "id": "450-NEGRO-45",
-      "articulo": 450,
-      "color": "NEGRO",
-      "talle": 45,
-      "stock": 0
-    },
-    {
-      "id": "470-NEGRO-38",
-      "articulo": 470,
-      "color": "NEGRO",
-      "talle": 38,
-      "stock": 3
-    },
-    {
-      "id": "470-NEGRO-39",
-      "articulo": 470,
-      "color": "NEGRO",
-      "talle": 39,
-      "stock": 13
-    },
-    {
-      "id": "470-NEGRO-40",
-      "articulo": 470,
-      "color": "NEGRO",
-      "talle": 40,
-      "stock": 29
-    },
-    {
-      "id": "470-NEGRO-41",
-      "articulo": 470,
-      "color": "NEGRO",
-      "talle": 41,
       "stock": 30
     },
     {
-      "id": "470-NEGRO-42",
-      "articulo": 470,
-      "color": "NEGRO",
-      "talle": 42,
-      "stock": 28
-    },
-    {
-      "id": "470-NEGRO-43",
-      "articulo": 470,
-      "color": "NEGRO",
-      "talle": 43,
-      "stock": 10
-    },
-    {
-      "id": "470-NEGRO-44",
-      "articulo": 470,
-      "color": "NEGRO",
+      "id": "450-CORDON-44",
+      "articulo": 450,
+      "color": "CORDON",
       "talle": 44,
+      "stock": 11
+    },
+    {
+      "id": "450-CORDON-45",
+      "articulo": 450,
+      "color": "CORDON",
+      "talle": 45,
+      "stock": 3
+    },
+    {
+      "id": "470-ELASTICO-38",
+      "articulo": 470,
+      "color": "ELASTICO",
+      "talle": 38,
+      "stock": 4
+    },
+    {
+      "id": "470-ELASTICO-39",
+      "articulo": 470,
+      "color": "ELASTICO",
+      "talle": 39,
       "stock": 13
     },
     {
-      "id": "470-NEGRO-45",
+      "id": "470-ELASTICO-40",
       "articulo": 470,
-      "color": "NEGRO",
+      "color": "ELASTICO",
+      "talle": 40,
+      "stock": 31
+    },
+    {
+      "id": "470-ELASTICO-41",
+      "articulo": 470,
+      "color": "ELASTICO",
+      "talle": 41,
+      "stock": 33
+    },
+    {
+      "id": "470-ELASTICO-42",
+      "articulo": 470,
+      "color": "ELASTICO",
+      "talle": 42,
+      "stock": 33
+    },
+    {
+      "id": "470-ELASTICO-43",
+      "articulo": 470,
+      "color": "ELASTICO",
+      "talle": 43,
+      "stock": 17
+    },
+    {
+      "id": "470-ELASTICO-44",
+      "articulo": 470,
+      "color": "ELASTICO",
+      "talle": 44,
+      "stock": 17
+    },
+    {
+      "id": "470-ELASTICO-45",
+      "articulo": 470,
+      "color": "ELASTICO",
       "talle": 45,
-      "stock": 6
+      "stock": 11
     },
     {
       "id": "07-VERDE-35",
@@ -2635,49 +2635,49 @@
       "articulo": 1005,
       "color": "NEGRO",
       "talle": 38,
-      "stock": 11
+      "stock": 28
     },
     {
       "id": "1005-NEGRO-39",
       "articulo": 1005,
       "color": "NEGRO",
       "talle": 39,
-      "stock": 4
+      "stock": 10
     },
     {
       "id": "1005-NEGRO-40",
       "articulo": 1005,
       "color": "NEGRO",
       "talle": 40,
-      "stock": 37
+      "stock": 86
     },
     {
       "id": "1005-NEGRO-41",
       "articulo": 1005,
       "color": "NEGRO",
       "talle": 41,
-      "stock": 65
+      "stock": 109
     },
     {
       "id": "1005-NEGRO-42",
       "articulo": 1005,
       "color": "NEGRO",
       "talle": 42,
-      "stock": 3
+      "stock": 13
     },
     {
       "id": "1005-NEGRO-43",
       "articulo": 1005,
       "color": "NEGRO",
       "talle": 43,
-      "stock": 30
+      "stock": 33
     },
     {
       "id": "1005-NEGRO-44",
       "articulo": 1005,
       "color": "NEGRO",
       "talle": 44,
-      "stock": 3
+      "stock": 10
     },
     {
       "id": "1005-NEGRO-45",
@@ -2691,56 +2691,56 @@
       "articulo": 1005,
       "color": "AZUL",
       "talle": 38,
-      "stock": 9
+      "stock": 18
     },
     {
       "id": "1005-AZUL-39",
       "articulo": 1005,
       "color": "AZUL",
       "talle": 39,
-      "stock": 56
+      "stock": 79
     },
     {
       "id": "1005-AZUL-40",
       "articulo": 1005,
       "color": "AZUL",
       "talle": 40,
-      "stock": 20
+      "stock": 25
     },
     {
       "id": "1005-AZUL-41",
       "articulo": 1005,
       "color": "AZUL",
       "talle": 41,
-      "stock": 31
+      "stock": 37
     },
     {
       "id": "1005-AZUL-42",
       "articulo": 1005,
       "color": "AZUL",
       "talle": 42,
-      "stock": 11
+      "stock": 10
     },
     {
       "id": "1005-AZUL-43",
       "articulo": 1005,
       "color": "AZUL",
       "talle": 43,
-      "stock": 14
+      "stock": 16
     },
     {
       "id": "1005-AZUL-44",
       "articulo": 1005,
       "color": "AZUL",
       "talle": 44,
-      "stock": 19
+      "stock": 30
     },
     {
       "id": "1005-AZUL-45",
       "articulo": 1005,
       "color": "AZUL",
       "talle": 45,
-      "stock": 14
+      "stock": 1
     },
     {
       "id": "1005-CEMENTO-38",
@@ -2761,161 +2761,161 @@
       "articulo": 1005,
       "color": "CEMENTO",
       "talle": 40,
-      "stock": 10
+      "stock": 16
     },
     {
       "id": "1005-CEMENTO-41",
       "articulo": 1005,
       "color": "CEMENTO",
       "talle": 41,
-      "stock": 15
+      "stock": 14
     },
     {
       "id": "1005-CEMENTO-42",
       "articulo": 1005,
       "color": "CEMENTO",
       "talle": 42,
-      "stock": 17
+      "stock": 20
     },
     {
       "id": "1005-CEMENTO-43",
       "articulo": 1005,
       "color": "CEMENTO",
       "talle": 43,
-      "stock": 23
+      "stock": 68
     },
     {
       "id": "1005-CEMENTO-44",
       "articulo": 1005,
       "color": "CEMENTO",
       "talle": 44,
-      "stock": 22
+      "stock": 74
     },
     {
       "id": "1005-CEMENTO-45",
       "articulo": 1005,
       "color": "CEMENTO",
       "talle": 45,
-      "stock": 6
+      "stock": 14
     },
     {
       "id": "1006-NEGRO-38",
       "articulo": 1006,
       "color": "NEGRO",
       "talle": 38,
-      "stock": 0
+      "stock": 2
     },
     {
       "id": "1006-NEGRO-39",
       "articulo": 1006,
       "color": "NEGRO",
       "talle": 39,
-      "stock": 19
+      "stock": 59
     },
     {
       "id": "1006-NEGRO-40",
       "articulo": 1006,
       "color": "NEGRO",
       "talle": 40,
-      "stock": 18
+      "stock": 40
     },
     {
       "id": "1006-NEGRO-41",
       "articulo": 1006,
       "color": "NEGRO",
       "talle": 41,
-      "stock": 71
+      "stock": 166
     },
     {
       "id": "1006-NEGRO-42",
       "articulo": 1006,
       "color": "NEGRO",
       "talle": 42,
-      "stock": 6
+      "stock": 28
     },
     {
       "id": "1006-NEGRO-43",
       "articulo": 1006,
       "color": "NEGRO",
       "talle": 43,
-      "stock": 151
+      "stock": 349
     },
     {
       "id": "1006-NEGRO-44",
       "articulo": 1006,
       "color": "NEGRO",
       "talle": 44,
-      "stock": 134
+      "stock": 263
     },
     {
       "id": "1006-NEGRO-45",
       "articulo": 1006,
       "color": "NEGRO",
       "talle": 45,
-      "stock": 50
+      "stock": 109
     },
     {
       "id": "1006-AZUL-38",
       "articulo": 1006,
       "color": "AZUL",
       "talle": 38,
-      "stock": 21
+      "stock": 24
     },
     {
       "id": "1006-AZUL-39",
       "articulo": 1006,
       "color": "AZUL",
       "talle": 39,
-      "stock": 21
+      "stock": 28
     },
     {
       "id": "1006-AZUL-40",
       "articulo": 1006,
       "color": "AZUL",
       "talle": 40,
-      "stock": 23
+      "stock": 31
     },
     {
       "id": "1006-AZUL-41",
       "articulo": 1006,
       "color": "AZUL",
       "talle": 41,
-      "stock": 26
+      "stock": 42
     },
     {
       "id": "1006-AZUL-42",
       "articulo": 1006,
       "color": "AZUL",
       "talle": 42,
-      "stock": 21
+      "stock": 23
     },
     {
       "id": "1006-AZUL-43",
       "articulo": 1006,
       "color": "AZUL",
       "talle": 43,
-      "stock": 17
+      "stock": 16
     },
     {
       "id": "1006-AZUL-44",
       "articulo": 1006,
       "color": "AZUL",
       "talle": 44,
-      "stock": 84
+      "stock": 169
     },
     {
       "id": "1006-AZUL-45",
       "articulo": 1006,
       "color": "AZUL",
       "talle": 45,
-      "stock": 15
+      "stock": 29
     },
     {
       "id": "1006-CEMENTO-38",
       "articulo": 1006,
       "color": "CEMENTO",
       "talle": 38,
-      "stock": 0
+      "stock": 2
     },
     {
       "id": "1006-CEMENTO-39",
@@ -2936,7 +2936,7 @@
       "articulo": 1006,
       "color": "CEMENTO",
       "talle": 41,
-      "stock": 0
+      "stock": 2
     },
     {
       "id": "1006-CEMENTO-42",
@@ -2950,21 +2950,21 @@
       "articulo": 1006,
       "color": "CEMENTO",
       "talle": 43,
-      "stock": 2
+      "stock": 5
     },
     {
       "id": "1006-CEMENTO-44",
       "articulo": 1006,
       "color": "CEMENTO",
       "talle": 44,
-      "stock": 8
+      "stock": 16
     },
     {
       "id": "1006-CEMENTO-45",
       "articulo": 1006,
       "color": "CEMENTO",
       "talle": 45,
-      "stock": 25
+      "stock": 50
     },
     {
       "id": "1230-VERDE-35",

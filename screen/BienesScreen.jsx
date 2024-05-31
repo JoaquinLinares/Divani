@@ -7,10 +7,9 @@ import { Link } from 'react-router-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import MenuDesplegable from '../components/MenuDesplegable';
 import { getAllItems } from '../services/async-storage/async-storage-read';
-import {  addItem } from '../services/async-storage/async-storage-write'; // Importamos el nuevo método
+import {   addItem  } from '../services/async-storage/async-storage-write'; // Importamos el nuevo método
 import styles from '../styles';
 import * as Print from 'expo-print';
-
 
 
 const BienesScreen = () => {
@@ -222,7 +221,7 @@ const BienesScreen = () => {
   return (
     <View style={styles.mainContainer}>
       {/* NavBar de Bienes */}
-      <View style={[styles.navbar, { marginTop: Constants.statusBarHeight }]}>
+      <View style={styles.navbar}>
         <View style={styles.leftIcon}>
           <Link to={'/'}>
             <FontAwesome5 name="arrow-left" size={24} color="white" />

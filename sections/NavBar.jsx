@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Animated, BackHandler } from 
 import { FontAwesome5 } from '@expo/vector-icons'; // Importa FontAwesome5 desde @expo/vector-icons
 import Constants from 'expo-constants'; // Importa Constants desde expo-constants
 import { Link } from 'react-router-native';
+import { Platform,StatusBar } from 'react-native';
 
 const Navbar = () => {
   const menuAnimation = new Animated.Value(-260); // Valor inicial fuera de la pantalla
@@ -82,7 +83,7 @@ const Navbar = () => {
 
 const styles = StyleSheet.create({
   navbar: {
-    marginTop: Constants.statusBarHeight,
+    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

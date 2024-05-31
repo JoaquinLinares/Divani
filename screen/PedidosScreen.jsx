@@ -357,7 +357,7 @@ const getQuantityColor = (rowIndex, columnIndex) => {
       {!loading && (
         <ScrollView style={{ flex: 1 }}>
           <View style={styles.mainContainer}>
-            <View style={[styles.navbar, { marginTop: Constants.statusBarHeight }]}>
+            <View style={styles.navbar}>
               <View style={styles.leftIcon}>
                 <Link to={'/'}>
                   <FontAwesome5 name="arrow-left" size={24} color="white" />

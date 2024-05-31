@@ -67,7 +67,7 @@ const StockScreen = () => {
   return (
     <View style={styles.mainContainer}>
       {/* NavBar de Stock */}
-      <View style={[styles.navbar, { marginTop: Constants.statusBarHeight }]}>
+      <View style={styles.navbar}>
         <View style={styles.leftIcon}>
           {/* Icono de volver para atrás */}
           <Link to={'/bienes'}>

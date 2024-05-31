@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "Divani",
+    "icon": "./assets/DIVANI-NARANJA.png",
     "slug": "Divani",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,15 +25,20 @@
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
       },
-      "package": "com.juliancarelli.Divani",      
+      "package": "com.juliancarelli.Divani",
       "permissions": [
         "CAMERA",
         "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE"    
+        "WRITE_EXTERNAL_STORAGE"
       ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c068f0ce-aafa-4543-a93f-deff3bab31ed"
+      }
     }
   }
 }

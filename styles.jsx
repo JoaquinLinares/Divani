@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native';
+import { Platform,StatusBar } from 'react-native';
+
 
 const styles = StyleSheet.create({
   // Contenido
@@ -83,6 +85,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,    
     width: '100%',
     zIndex:999,
+    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   leftIcon: {    
     marginLeft: 10,

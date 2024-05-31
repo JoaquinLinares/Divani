@@ -80,7 +80,7 @@ const DocumentosScreen = () => {
     return (
         <View style={styles.mainContainer}>
             {/* NavBar de documentos */}
-            <View style={[styles.navbar, { marginTop: Constants.statusBarHeight }]}>
+            <View style={styles.navbar}>
                 <View style={styles.leftIcon}>
                     <Link to={'/'}>
                         <FontAwesome5 name="arrow-left" size={24} color="white" />

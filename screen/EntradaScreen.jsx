@@ -204,7 +204,7 @@ const EntradaScreen = () => {
         <View style={styles.mainContainer}>
             {/* NavBar de Entrada */}
             {!openCamera && (
-                <View style={[styles.navbar, { marginTop: Constants.statusBarHeight }]}>
+                <View style={styles.navbar}>
                     <View style={styles.leftIcon}>
                         {/* Icono de volver para atrás */}
                         <Link to={'/'}>

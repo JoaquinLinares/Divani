@@ -211,7 +211,7 @@ const handleChangeStock = async () => {
         <View style={styles.mainContainer}>
             {/* NavBar de Salida */}
             {!openCamera && (
-                <View style={[styles.navbar, { marginTop: Constants.statusBarHeight }]}>
+                <View style={styles.navbar}>
                     <View style={styles.leftIcon}>
                         {/* Icono de volver para atrás */}
                         <Link to={'/'}>
