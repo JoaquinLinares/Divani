@@ -1,4 +1,4 @@
-Aplicacion de codigo de barras para pyme.
+Aplicacion de codigo de barras para pyme. Aplicacion para manejo de Stock, Entrada y Salida de productos, y seccion para hacer Pedidos.
 
 ### Pantalla de Inicio
 <img src="assets/divani-home.jpeg" alt="Pantalla de Inicio" width="300">
