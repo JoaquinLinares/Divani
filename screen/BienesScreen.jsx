@@ -7,10 +7,9 @@ import { Link } from 'react-router-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import MenuDesplegable from '../components/MenuDesplegable';
 import { getAllItems } from '../services/async-storage/async-storage-read';
-import {   addItem  } from '../services/async-storage/async-storage-write'; // Importamos el nuevo método
+import { addItem  } from '../services/async-storage/async-storage-write'; 
 import styles from '../styles';
-import * as Print from 'expo-print';
-
+import { updateSheet } from '../services/googleSheets'; 
 
 const BienesScreen = () => {
   const [bienesStock, setBienesStock] = useState([]);
@@ -117,107 +116,18 @@ const BienesScreen = () => {
     }
   };
 
-  /////////////////////// Funcion para generar el pdf
-
-  const generatePDF = async () => {
-    // Agrupar los datos por artículo y color
-    const groupedData = bienesStock.reduce((acc, item) => {
-      const { articulo, color, talle, stock } = item;
-  
-      if (!acc[articulo]) {
-        acc[articulo] = {};
-      }
-      if (!acc[articulo][color]) {
-        acc[articulo][color] = {};
-      }
-      acc[articulo][color][talle] = stock;
-  
-      return acc;
-    }, {});
-  
-    // Generar el contenido HTML para el PDF
-    let htmlContent = `
-      <html>
-      <head>
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-          }
-          .container {
-            padding: 16px;
-          }
-          .header {
-            text-align: center;
-            margin-bottom: 20px;
-          }
-          .table {
-            width: 100%;
-            border-collapse: collapse;
-          }
-          .table th, .table td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-          }
-          .table th {
-            background-color: #f2f2f2;
-          }
-          .article-cell {
-            background-color: #f9f9f9;
-            font-weight: bold;
-          }
-          .color-cell {
-            background-color: #e9e9e9;
-          }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <div class="header">
-            <h1>STOCK GENERAL</h1>
-          </div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Artículo</th>
-                <th>Color</th>
-                ${tableHead.slice(2).map((size) => `<th>${size}</th>`).join('')}
-              </tr>
-            </thead>
-            <tbody>
-              ${Object.keys(groupedData).map((articulo) => {
-                const colorRows = Object.keys(groupedData[articulo]).map((color, index) => {
-                  const stockCells = tableHead.slice(2).map((size) => {
-                    const stock = groupedData[articulo][color][size] || ' ';
-                    return `<td>${stock}</td>`;
-                  }).join('');
-  
-                  return `
-                    <tr>
-                      ${index === 0 ? `<td class="article-cell" rowspan="${Object.keys(groupedData[articulo]).length}">${articulo}</td>` : ''}
-                      <td class="color-cell">${color}</td>
-                      ${stockCells}
-                    </tr>
-                  `;
-                }).join('');
-  
-                return colorRows;
-              }).join('')}
-            </tbody>
-          </table>
-        </div>
-      </body>
-      </html>
-    `;
-  
+  /////////////////////// Funcion para generar el excel ///////////////////////
+  const generateExcel = async () => {
     try {
-      await Print.printAsync({ html: htmlContent });
-      alert('PDF generado y enviado a imprimir.');
+      await updateSheet();
+      alert('Hoja de cálculo actualizada exitosamente!');
     } catch (error) {
-      console.error('Error al generar el PDF:', error);
+      console.error('Error al actualizar la hoja de cálculo:', error);
+      alert('Error al actualizar la hoja de cálculo.');
     }
-  };  
+  };
 
+  
   return (
     <View style={styles.mainContainer}>
       {/* NavBar de Bienes */}
@@ -228,7 +138,7 @@ const BienesScreen = () => {
           </Link>
         </View>
         <Text style={styles.centerText}>Bienes</Text>   
-        <TouchableOpacity onPress={generatePDF}>
+        <TouchableOpacity onPress={generateExcel}>
             <View style={styles.rightIcon}>
               <FontAwesome5 name="print" size={24} color="white" />
             </View>

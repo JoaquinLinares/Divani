@@ -14,6 +14,7 @@ import SalidaScreen from './screen/SalidaScreen'
 import PedidosScreen from './screen/PedidosScreen'
 import StockScreen from './screen/StockScreen';
 
+
 const MILLI_SECONDS_PER_DAY = 1000 * 60 * 60 * 24;
 const SEVEN_DAYS = 7;
 
